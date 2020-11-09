@@ -66,21 +66,21 @@ Mac OS and Windows Users can install docker from `Docker's Website <https://www.
 
 To install on a **Linux** operating system, run the commands below
 
-.. code-block:: RST
+.. code-block:: bash
 
   sudo apt-get update
   sudo apt-get install docker.io
 
 Step 2: Install DeepStack
 
-.. code-block:: RST
+.. code-block:: bash
 
   docker pull deepquestai/deepstack
 
 
 Step 3: Run DeepStack with Scene Recognition API enabled
 
-.. code-block:: 
+.. code-block:: bash
 
   docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
 
@@ -102,10 +102,9 @@ Run the **example scene recognition** code at the begining of this page to verif
    :caption: Contents:
 
    getting-started/index
+   face-recognition/index
 
 
-Documentation Index
-===================
 
 * :ref:`genindex`
 * :ref:`modindex`
