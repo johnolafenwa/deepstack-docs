@@ -43,9 +43,9 @@ Using DeepStack, we can classify the scene of the above image as seen below.
 
 **Response**
 
-.. code-block:: JSON
+.. code-block:: json
 
-  { success: true, label: 'highway', confidence: 0.63377846 }
+  { 'success': true, label: 'highway', confidence: 0.63377846 }
 
 
 
