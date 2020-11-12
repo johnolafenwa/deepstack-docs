@@ -105,6 +105,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    face-recognition/index
    face-detection/index
    face-match/index
+   object-detection/index
 
 
 
