@@ -104,6 +104,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    getting-started/index
    face-recognition/index
    face-detection/index
+   face-match/index
 
 
 
