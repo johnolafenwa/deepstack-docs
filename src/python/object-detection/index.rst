@@ -52,7 +52,7 @@ Starting DeepStack on Raspberry PI
 Starting DeepStack on Windows
 -----------------------------
 
-Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** and click *Start Now*.
+Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** and click *Start Now* .
 
 .. figure:: ../static/object-detection.png
 
@@ -126,7 +126,7 @@ The min_confidence parameter allows you to increase or reduce the minimum confid
 
 We lower the confidence allowed below.
 
-..code-block:: python
+.. code-block:: python
 
     import requests
 

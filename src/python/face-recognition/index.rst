@@ -29,6 +29,8 @@ Below we start DeepStack with only the face APIs enabled.
    sudo docker run --gpus all --e VISION-FACE=True -v localstorage:/datastore \
    -p 80:5000 deepquestai/deepstack:gpu
 
+
+
 *Basic Parameters*
 
 **-e VISION-FACE=True** This enables the face recognition APIs, all apis are disabled by default.
