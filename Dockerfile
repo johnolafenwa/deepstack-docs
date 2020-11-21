@@ -5,7 +5,8 @@ RUN apt install -y npm
 RUN npm install -y -g yarn
 RUN yarn global add serve
 RUN pip3 install Sphinx
-RUN sudo apt-get install -y make
+RUN pip install sphinxawesome-theme
+RUN apt-get install -y make
 
 COPY . /
 
@@ -13,4 +14,4 @@ RUN cd /src/python && make html
 
 EXPOSE 5000
 
-CMD [ "serve"]
+CMD [ "serve", "/src/python/build/html"]
