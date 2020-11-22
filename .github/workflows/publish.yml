@@ -12,3 +12,4 @@ jobs:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
         tags: "latest,v1.0.0"
+        default_branch: main
