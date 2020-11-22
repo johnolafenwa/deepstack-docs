@@ -18,9 +18,19 @@ jobs:
         default_branch: main
         dockerfile: Dockerfile.python
   publish-python:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - run: |
-        sudo apt-get update
-        sudo apt-get install -y sshpass
-        sshpass -p "${{ secrets.PYTHON_MACHINE_ACCESS }}" ssh -o StrictHostKeyChecking=no root@"${{ secrets.PYTHON_MACHINE_ADDRESS }}" "sudo docker pull deepquestai/deepstack-docs-python ; sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs ; sudo docker run -d --name deepstack_docs -p 80:5000 --restart unless-stopped deepquestai/deepstack-docs-python ; sudo docker ps ; exit"
+    - name: Deploy DeepStack Python Documentation
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.PYTHON_MACHINE_ADDRESS }}
+        username: root
+        password: ${{ secrets.PYTHON_MACHINE_ACCESS }}
+        port: 22
+        script: |
+          sudo docker pull deepquestai/deepstack-docs-python
+          sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
+          sudo docker run -d --name deepstack_docs -p 80:5000 --restart unless-stopped deepquestai/deepstack-docs-python
+          sudo docker ps
+          exit
