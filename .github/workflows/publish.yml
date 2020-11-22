@@ -13,5 +13,5 @@ jobs:
         name: deepquestai/deepstack-docs
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
-        tags: "latest,v1.0.0"
+        tags: "latest,v1.0"
         default_branch: main
