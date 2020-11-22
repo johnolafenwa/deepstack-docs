@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Publish to Registry
+    - name: Publish to Docker Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: deepquestai/deepstack-docs-python
@@ -18,7 +18,8 @@ jobs:
         default_branch: main
         dockerfile: Dockerfile.python
   publish-python:
-    name: Deploy
+    name: Deploy to Live Server
+    needs: build-python
     runs-on: ubuntu-latest
     steps:
     - name: Deploy DeepStack Python Documentation
