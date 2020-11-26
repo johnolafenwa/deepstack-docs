@@ -1,5 +1,6 @@
 FROM python:3.6-slim
 
+# Install Dependecies
 RUN apt update
 RUN apt install -y npm
 RUN npm install -y -g yarn
@@ -8,10 +9,19 @@ RUN pip3 install Sphinx
 RUN pip install sphinxawesome-theme
 RUN apt-get install -y make
 
+# Copy Project
 COPY . /
 
+#  Build Python documentation
 RUN cd /src/python && make html
 
+# Retrieve and Copy TLS certficiate and private key to appropriate 
+ARG python_TLS_CERT
+ARG python_TLS_CERT_KEY
+RUN cd /src && python3 get_tls_cert.py ${python_TLS_CERT} ${python_TLS_CERT_KEY}  && cp -a cert.pem /src/python/build/html && cp -a key.pem /src/python/build/html
+
+# Expose port
 EXPOSE 5000
 
-CMD [ "serve", "/src/python/build/html"]
+# Run Python documentation with TLS
+CMD [ "serve", "/src/python/build/html", "--ssl-cert", "/src/python/build/html/cert.pem", "--ssl-key", "/src/python/build/html/key.pem"]
