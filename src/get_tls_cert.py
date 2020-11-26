@@ -1,8 +1,8 @@
 import os,sys
 
 
-cert = sys.argv[1]
-cert_key = sys.argv[2]
+cert = os.getenv("PYTHON_TLS_CERT")
+cert_key = os.getenv("PYTHON_TLS_CERT_KEY")
 
 with open("cert.pem", "w+") as cert_writer:
     cert_writer.write(cert)
