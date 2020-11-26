@@ -16,9 +16,7 @@ COPY . /
 RUN cd /src/python && make html
 
 # Retrieve and Copy TLS certficiate and private key to appropriate 
-ARG PYTHON_TLS_CERT
-ARG PYTHON_TLS_CERT_KEY
-RUN cd /src && python3 get_tls_cert.py ${PYTHON_TLS_CERT} ${PYTHON_TLS_CERT_KEY}  && cp -a cert.pem /src/python/build/html && cp -a key.pem /src/python/build/html
+RUN cd /src && python3 get_tls_cert.py && cp -a cert.pem /src/python/build/html && cp -a key.pem /src/python/build/html
 
 # Expose port
 EXPOSE 5000
