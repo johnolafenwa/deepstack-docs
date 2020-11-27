@@ -38,6 +38,6 @@ jobs:
         script: |
           sudo docker pull deepquestai/deepstack-docs-python
           sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
-          sudo docker run -d --name deepstack_docs -p 80:5000 --restart unless-stopped deepquestai/deepstack-docs-python
+          sudo docker run -d --name deepstack_docs -p 80:8080 --restart unless-stopped deepquestai/deepstack-docs-python
           sudo docker ps
           exit
