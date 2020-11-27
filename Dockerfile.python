@@ -14,16 +14,8 @@ COPY . /
 
 #  Build Python documentation
 RUN cd /src/python && make html
-
-# Retrieve and Copy TLS certficiate and private key to appropriate 
-ARG DIGITALOCEAN_SPACES_ZONE
-ARG DIGITALOCEAN_SPACES_SPACE
-ARG DIGITALOCEAN_SPACES_KEY
-ARG DIGITALOCEAN_SPACES_KEY_SEC
-RUN cd /src && python3 get_tls_cert.py ${DIGITALOCEAN_SPACES_ZONE} ${DIGITALOCEAN_SPACES_SPACE} ${DIGITALOCEAN_SPACES_KEY} ${DIGITALOCEAN_SPACES_KEY_SEC}  && cp -a cert.pem /src/python/build/html && cp -a key.pem /src/python/build/html
-
 # Expose port
 EXPOSE 8080
 
 # Run Python documentation with TLS
-CMD [ "http-server", "/src/python/build/html", "-S", "-C", "/src/cert.pem", "-K", "/src/key.pem"]
+CMD [ "http-server", "/src/python/build/html"]
