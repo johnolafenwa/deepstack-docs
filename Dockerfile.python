@@ -27,4 +27,4 @@ RUN cd /src && python3 get_tls_cert.py ${DIGITALOCEAN_SPACES_ZONE} ${DIGITALOCEA
 EXPOSE 5000
 
 # Run Python documentation with TLS
-CMD [ "serve", "/src/python/build/html", "--ssl-cert", "/src/python/build/html/cert.pem", "--ssl-key", "/src/python/build/html/key.pem"]
+CMD [ "serve", "/src/python/build/html", "--ssl-cert", "/src/cert.pem", "--ssl-key", "/src/key.pem"]
