@@ -11,8 +11,10 @@ jobs:
     - name: Publish to Docker Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       env:
-        PYTHON_TLS_CERT: ${{ secrets.PYTHON_TLS_CERT }}
-        PYTHON_TLS_CERT_KEY: ${{ secrets.PYTHON_TLS_CERT_KEY }}
+        DIGITALOCEAN_SPACES_ZONE: ${{ secrets.DIGITALOCEAN_SPACES_ZONE }}
+        DIGITALOCEAN_SPACES_SPACE: ${{ secrets.DIGITALOCEAN_SPACES_SPACE }}
+        DIGITALOCEAN_SPACES_KEY: ${{ secrets.DIGITALOCEAN_SPACES_KEY }}
+        DIGITALOCEAN_SPACES_KEY_SEC: ${{ secrets.DIGITALOCEAN_SPACES_KEY_SEC }}
       with:
         name: deepquestai/deepstack-docs-python
         username: ${{ secrets.DOCKER_USER }}
@@ -20,7 +22,7 @@ jobs:
         tags: "latest"
         default_branch: main
         dockerfile: Dockerfile.python
-        buildargs: PYTHON_TLS_CERT,PYTHON_TLS_CERT_KEY
+        buildargs: DIGITALOCEAN_SPACES_ZONE,DIGITALOCEAN_SPACES_SPACE,DIGITALOCEAN_SPACES_KEY,DIGITALOCEAN_SPACES_KEY_SEC
   publish-python:
     name: Deploy to Live Server
     needs: build-python
