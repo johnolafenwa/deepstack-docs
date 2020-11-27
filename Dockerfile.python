@@ -23,7 +23,7 @@ ARG DIGITALOCEAN_SPACES_KEY_SEC
 RUN cd /src && python3 get_tls_cert.py ${DIGITALOCEAN_SPACES_ZONE} ${DIGITALOCEAN_SPACES_SPACE} ${DIGITALOCEAN_SPACES_KEY} ${DIGITALOCEAN_SPACES_KEY_SEC}  && cp -a cert.pem /src/python/build/html && cp -a key.pem /src/python/build/html
 
 # Expose port
-EXPOSE 5000
+EXPOSE 8080
 
 # Run Python documentation with TLS
 CMD [ "http-server", "/src/python/build/html", "-S", "-C", "/src/cert.pem", "-K", "/src/key.pem"]
