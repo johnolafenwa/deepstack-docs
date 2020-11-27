@@ -1,11 +1,22 @@
 import os,sys
+import boto3
 
 
-cert = os.getenv("PYTHON_TLS_CERT")
-cert_key = os.getenv("PYTHON_TLS_CERT_KEY")
+DIGITALOCEAN_SPACES_ZONE = sys.argv[1]
+DIGITALOCEAN_SPACES_SPACE = sys.argv[2]
+DIGITALOCEAN_SPACES_KEY = sys.argv[3]
+DIGITALOCEAN_SPACES_KEY_SEC = sys.argv[4]
 
-with open("cert.pem", "w+") as cert_writer:
-    cert_writer.write(cert)
+session = boto3.session.Session()
+client = session.client('s3',
+                        region_name=DIGITALOCEAN_SPACES_ZONE,
+                        endpoint_url='https://{}.digitaloceanspaces.com'.format(DIGITALOCEAN_SPACES_ZONE),
+                        aws_access_key_id=DIGITALOCEAN_SPACES_KEY,
+                        aws_secret_access_key=DIGITALOCEAN_SPACES_KEY_SEC)
 
-with open("key.pem", "w+") as key_writer:
-    key_writer.write(cert_key)
+client.download_file(DIGITALOCEAN_SPACES_SPACE,
+                     'deepstack/docs/tls/python/key.pem',
+                     'key.pem')
+client.download_file(DIGITALOCEAN_SPACES_SPACE,
+                     'deepstack/docs/tls/python/cert.pem',
+                     'cert.pem')
