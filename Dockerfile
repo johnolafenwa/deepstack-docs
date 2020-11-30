@@ -14,9 +14,9 @@ RUN pip3 install boto3
 COPY . /
 
 #  Build Python documentation
-RUN cd /src/python && make html
+RUN cd /src && make html
 # Expose port
-EXPOSE 8080
+EXPOSE 80
 
 # Run Python documentation with TLS
-CMD [ "http-server", "/src/python/build/html", "-p", "80"]
+CMD [ "http-server", "/src/build/html", "-p", "80"]

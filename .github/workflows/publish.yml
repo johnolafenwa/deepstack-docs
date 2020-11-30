@@ -4,34 +4,16 @@ on:
     branches:
       - main
 jobs:
-  build-python:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Publish to Docker Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        name: deepquestai/deepstack-docs-python
+        name: deepquestai/deepstack-docs
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
-        tags: "latest"
+        tags: "latest, v1"
         default_branch: main
         dockerfile: Dockerfile.python
-  publish-python:
-    name: Deploy to Live Server
-    needs: build-python
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy DeepStack Python Documentation
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.PYTHON_MACHINE_ADDRESS }}
-        username: root
-        password: ${{ secrets.PYTHON_MACHINE_ACCESS }}
-        port: 22
-        script: |
-          sudo docker pull deepquestai/deepstack-docs-python
-          sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
-          sudo docker run -d --name deepstack_docs -p 80:80 --restart unless-stopped deepquestai/deepstack-docs-python
-          sudo docker ps
-          exit
