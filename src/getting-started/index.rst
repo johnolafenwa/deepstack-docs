@@ -72,20 +72,87 @@ Here we are building an application that can tell the names of a number of popul
 
 Below we will register the faces with their names
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   def register_face(img_path,user_id):
-      image_data = open(img_path,"rb").read()
-      response = requests.post("http://localhost:80/v1/vision/face/register",
-      files={"image":image_data}, data={"userid":user_id}).json()
-      print(json)
+      import requests
 
-   register_face("cruise.jpg","Tom Cruise")
-   register_face("adele.jpg","Adele")
-   register_face("elba.jpg","Idris Elba")
-   register_face("perri.jpg","Christina Perri")
+      def register_face(img_path,user_id):
+         image_data = open(img_path,"rb").read()
+         response = requests.post("http://localhost:80/v1/vision/face/register",
+         files={"image":image_data}, data={"userid":user_id}).json()
+         print(json)
+
+      register_face("cruise.jpg","Tom Cruise")
+      register_face("adele.jpg","Adele")
+      register_face("elba.jpg","Idris Elba")
+      register_face("perri.jpg","Christina Perri")
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      run_prediction("cruise.jpg","Tom Cruise")
+      run_prediction("elba.jpg","Idris Elba")
+      run_prediction("perri.jpg","Christina Perri")
+      run_prediction("adele.jpg","Adele")
+
+      function run_prediction(image_path,userid){
+
+         image_stream = fs.createReadStream(image_path)
+
+         var form = {"image":image_stream,"userid":userid}
+
+         request.post({url:"http://localhost:80/v1/vision/face/register", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            console.log(response)
+
+         })
+
+      }
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+
+      namespace app
+      {
+
+      class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task registerFace(string userid, string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            request.Add(new StringContent(userid),"userid");
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/register",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            registerFace("Tom Cruise","cruise.jpg").Wait();
+            registerFace("Adele","adele.jpg").Wait();
+            registerFace("Idris Elba","elba.jpg").Wait();
+            registerFace("Christina Perri","perri.jpg").Wait();
+
+         }
+
+      }
+
+      }
 
 
 
@@ -93,17 +160,101 @@ Below we will register the faces with their names
 
 .. figure:: ../static/adele2.jpg
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   test_image = open("test-image.jpg","rb").read()
+      import requests
 
-   res = requests.post("http://localhost:80/v1/vision/face/recognize",
-   files={"image":test_image}).json()
+      test_image = open("test-image.jpg","rb").read()
 
-   for user in res["predictions"]:
-      print(user["userid"])
+      res = requests.post("http://localhost:80/v1/vision/face/recognize",
+      files={"image":test_image}).json()
+
+      for user in res["predictions"]:
+         print(user["userid"])
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      image_stream = fs.createReadStream("test-image.jpg")
+
+      var form = {"image":image_stream}
+
+      request.post({url:"http://localhost:80/v1/vision/face/recognize", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         predictions = response["predictions"]
+         for(var i =0; i < predictions.length; i++){
+
+         console.log(predictions[i]["userid"])
+
+         }
+
+      })
+      
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+      using Newtonsoft.Json;
+
+
+      namespace appone
+      {
+
+      class Response {
+
+         public bool success {get;set;}
+         public Face[] predictions {get;set;}
+
+      }
+
+      class Face {
+
+         public string userid {get;set;}
+         public float confidence {get;set;}
+         public int y_min {get;set;}
+         public int x_min {get;set;}
+         public int y_max {get;set;}
+         public int x_max {get;set;}
+
+      }
+
+      class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task recognizeFace(string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/recognize",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+            Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            foreach (var user in response.predictions){
+
+                  Console.WriteLine(user.userid);
+
+            }
+
+         }
+
+         static void Main(string[] args){
+
+            recognizeFace("test-image.jpg").Wait();
+
+         }
+
+      }
+
+      }
 
 
 
