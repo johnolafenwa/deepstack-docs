@@ -12,15 +12,91 @@ The face detection API detects faces and returns their coordinates. It functions
 
 .. figure:: ../static/family.jpg
 
-.. code-block:: python
+.. tabs::
 
-    import requests
+    .. code-tab:: python
 
-    image_data = open("family.jpg","rb").read()
+        import requests
 
-    response = requests.post("http://localhost:80/v1/vision/face",files={"image":image_data}).json()
+        image_data = open("family.jpg","rb").read()
 
-    print(response)
+        response = requests.post("http://localhost:80/v1/vision/face",files={"image":image_data}).json()
+
+        print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream = fs.createReadStream("family.jpg")
+
+        var form = {"image":image_stream}
+
+        request.post({url:"http://localhost:80/v1/vision/face", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+
+            console.log(response)
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+        using Newtonsoft.Json;
+
+
+        namespace appone
+        {
+
+        class Response {
+
+            public bool success {get;set;}
+            public Face[] predictions {get;set;}
+
+        }
+
+        class Face {
+
+            public string gender {get;set;}
+            public float confidence {get;set;}
+            public int y_min {get;set;}
+            public int x_min {get;set;}
+            public int y_max {get;set;}
+            public int x_max {get;set;}
+
+        }
+
+        class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task detectFace(string image_path){
+
+                var request = new MultipartFormDataContent();
+                var image_data = File.OpenRead(image_path);
+                request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+                var output = await client.PostAsync("http://localhost:80/v1/vision/face",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+                Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+                Console.WriteLine(jsonString);
+
+            }
+
+            static void Main(string[] args){
+
+                detectFace("family.jpg").Wait();
+
+            }
+
+        }
+
+        }
 
 **Response**
 
@@ -30,26 +106,145 @@ The face detection API detects faces and returns their coordinates. It functions
 
 We can use the coordinates returned to extract the faces from the image.
 
-.. code-block:: python
+.. tabs::
 
-    import requests
-    from PIL import Image
+    .. code-tab:: python
 
-    image_data = open("family.jpg","rb").read()
-    image = Image.open("family.jpg").convert("RGB")
+        import requests
+        from PIL import Image
 
-    response = requests.post("http://localhost:80/v1/vision/face",files={"image":image_data}).json()
-    i = 0
-    for face in response["predictions"]:
+        image_data = open("family.jpg","rb").read()
+        image = Image.open("family.jpg").convert("RGB")
 
-        y_max = int(face["y_max"])
-        y_min = int(face["y_min"])
-        x_max = int(face["x_max"])
-        x_min = int(face["x_min"])
-        cropped = image.crop((x_min,y_min,x_max,y_max))
-        cropped.save("image{}.jpg".format(i))
+        response = requests.post("http://localhost:80/v1/vision/face",files={"image":image_data}).json()
+        i = 0
+        for face in response["predictions"]:
 
-        i += 1
+            y_max = int(face["y_max"])
+            y_min = int(face["y_min"])
+            x_max = int(face["x_max"])
+            x_min = int(face["x_min"])
+            cropped = image.crop((x_min,y_min,x_max,y_max))
+            cropped.save("image{}.jpg".format(i))
+
+            i += 1
+
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+        const easyimage = require("easyimage")
+
+        image_stream = fs.createReadStream("family.jpg")
+
+        var form = {"image":image_stream}
+
+        request.post({url:"http://localhost:80/v1/vision/face", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+            for(var i =0; i < predictions.length; i++){
+
+                pred = predictions[i]
+                gender = pred["gender"]
+                y_min = pred["y_min"]
+                x_min = pred["x_min"]
+                y_max = pred["y_max"]
+                x_max = pred["x_max"]
+
+                easyimage.crop(
+                    {
+                    src: "family.jpg",
+                    dst: i.toString() + "_.jpg",
+                    x: x_min,
+                    cropwidth: x_max - x_min,
+                    y: y_min,
+                    cropheight: y_max - y_min,
+                    }
+                )
+
+            }
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+        using Newtonsoft.Json;
+        using SixLabors.ImageSharp;
+        using SixLabors.ImageSharp.Processing;
+        using SixLabors.Primitives;
+
+        namespace appone
+        {
+
+        class Response {
+
+        public bool success {get;set;}
+        public Face[] predictions {get;set;}
+
+        }
+
+        class Face {
+
+        public string gender {get;set;}
+        public float confidence {get;set;}
+        public int y_min {get;set;}
+        public int x_min {get;set;}
+        public int y_max {get;set;}
+        public int x_max {get;set;}
+
+        }
+
+        class App {
+
+        static HttpClient client = new HttpClient();
+
+        public static async Task recognizeFace(string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+            Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            var i = 0;
+
+            foreach (var user in response.predictions){
+
+                var width = user.x_max - user.x_min;
+                var height = user.y_max - user.y_min;
+
+                var crop_region = new Rectangle(user.x_min,user.y_min,width,height);
+
+                using(var image = Image.Load(image_path)){
+
+                    image.Mutate(x => x
+                    .Crop(crop_region)
+                    );
+                    image.Save(i.ToString() + "_.jpg");
+
+                }
+
+                i++;
+
+            }
+
+            }
+
+            static void Main(string[] args){
+
+                recognizeFace("family.jpg").Wait();
+
+            }
+
+        }
+
+        }
+    
     
 
 .. figure:: ../static/family1.jpg
