@@ -62,17 +62,81 @@ You can specify multiple pictures per person during registration.
 
 **Example**
 
-.. code-block:: python
+.. tabs::
 
-   import requests
 
-   user_image1 = open("image1.jpg","rb").read()
-   user_image2 = open("image2.jpg","rb").read()
+   .. code-tab:: python
 
-   response = requests.post("http://localhost:80/v1/vision/face/register",
-   files={"image1":user_image1,"image2":user_image2},data={"userid":"User Name"}).json()
+      import requests
 
-   print(response)
+      user_image1 = open("image1.jpg","rb").read()
+      user_image2 = open("image2.jpg","rb").read()
+
+      response = requests.post("http://localhost:80/v1/vision/face/register",
+      files={"image1":user_image1,"image2":user_image2},data={"userid":"User Name"}).json()
+
+      print(response)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      run_prediction("image1.jpg","User Name")
+
+      function run_prediction(image_path,userid){
+
+         image_stream = fs.createReadStream(image_path)
+
+         var form = {"image":image_stream,"userid":userid}
+
+         request.post({url:"http://localhost:80/v1/vision/face/register", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            console.log(response)
+
+         })
+
+      }
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+
+      namespace app
+      {
+
+      class App {
+
+
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task registerFace(string userid, string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image1",Path.GetFileName(image_path));
+            request.Add(new StringContent(userid),"userid");
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/register",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            registerFace("User Name ","userimage-path").Wait();
+
+         }
+
+      }
+
+      }
 
 
 **Response**
@@ -104,19 +168,107 @@ We shall test this on the image below.
 
 .. figure:: ../static/idriselba2.jpg
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   image_data = open("test-image2.jpg","rb").read()
+      import requests
 
-   response = requests.post("http://localhost:80/v1/vision/face/recognize",
-   files={"image":image_data}).json()
+      image_data = open("test-image2.jpg","rb").read()
 
-   for user in response["predictions"]:
-      print(user["userid"])
+      response = requests.post("http://localhost:80/v1/vision/face/recognize",
+      files={"image":image_data}).json()
 
-   print("Full Response: ",response)
+      for user in response["predictions"]:
+         print(user["userid"])
+
+      print("Full Response: ",response)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      image_stream = fs.createReadStream("test-image2.jpg")
+
+      var form = {"image":image_stream}
+
+      request.post({url:"http://localhost:80/v1/vision/face/recognize", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         predictions = response["predictions"]
+         for(var i =0; i < predictions.length; i++){
+
+            console.log(predictions[i]["userid"])
+
+         }
+
+         console.log(response)
+
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+      using Newtonsoft.Json;
+
+
+      namespace appone
+      {
+
+      class Response {
+
+         public bool success {get;set;}
+         public Face[] predictions {get;set;}
+
+      }
+
+      class Face {
+
+         public string userid {get;set;}
+         public float confidence {get;set;}
+         public int y_min {get;set;}
+         public int x_min {get;set;}
+         public int y_max {get;set;}
+         public int x_max {get;set;}
+
+      }
+
+      class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task recognizeFace(string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/recognize",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+            Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            foreach (var user in response.predictions){
+
+                  Console.WriteLine(user.userid);
+
+            }
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            recognizeFace("test-image2.jpg").Wait();
+
+         }
+
+      }
+
+      }
 
 .. code-block:: json
 
@@ -132,26 +284,138 @@ Extracting Faces
 ----------------
 The face coordinates allows you to easily extract the detected faces. Here we shall use PIL to extract the faces and save them
 
-.. code-block:: python
+.. tabs::
 
-   import requests
-   from PIL import Image
+   .. code-tab:: python
 
-   image_data = open("test-image2.jpg","rb").read()
-   image = Image.open("test-image2.jpg").convert("RGB")
+      import requests
+      from PIL import Image
 
-   response = requests.post("http://localhost:80/v1/vision/face/recognize",
-   files={"image":image_data}).json()
+      image_data = open("test-image2.jpg","rb").read()
+      image = Image.open("test-image2.jpg").convert("RGB")
 
-   for face in response["predictions"]:
+      response = requests.post("http://localhost:80/v1/vision/face/recognize",
+      files={"image":image_data}).json()
 
-      userid = face["userid"]
-      y_max = int(face["y_max"])
-      y_min = int(face["y_min"])
-      x_max = int(face["x_max"])
-      x_min = int(face["x_min"])
-      cropped = image.crop((x_min,y_min,x_max,y_max))
-      cropped.save("{}.jpg".format(userid))
+      for face in response["predictions"]:
+
+         userid = face["userid"]
+         y_max = int(face["y_max"])
+         y_min = int(face["y_min"])
+         x_max = int(face["x_max"])
+         x_min = int(face["x_min"])
+         cropped = image.crop((x_min,y_min,x_max,y_max))
+         cropped.save("{}.jpg".format(userid))
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+      const easyimage = require("easyimage")
+
+      image_stream = fs.createReadStream("test-image2.jpg")
+
+      var form = {"image":image_stream}
+
+      request.post({url:"http://localhost:80/v1/vision/face/recognize", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         predictions = response["predictions"]
+         for(var i =0; i < predictions.length; i++){
+            pred = predictions[i]
+            userid = pred["userid"]
+            y_min = pred["y_min"]
+            x_min = pred["x_min"]
+            y_max = pred["y_max"]
+            x_max = pred["x_max"]
+
+            easyimage.crop(
+                  {
+                     src: "test-image2.jpg",
+                     dst: userid+".jpg",
+                     x: x_min,
+                     cropwidth: x_max - x_min,
+                     y: y_min,
+                     cropheight: y_max - y_min,
+                  }
+            )
+         }
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+      using Newtonsoft.Json;
+      using SixLabors.ImageSharp;
+      using SixLabors.ImageSharp.Processing;
+      using SixLabors.Primitives;
+
+      namespace appone
+      {
+
+      class Response {
+
+      public bool success {get;set;}
+      public Face[] predictions {get;set;}
+
+      }
+
+      class Face {
+
+      public string userid {get;set;}
+      public float confidence {get;set;}
+      public int y_min {get;set;}
+      public int x_min {get;set;}
+      public int y_max {get;set;}
+      public int x_max {get;set;}
+
+      }
+
+      class App {
+
+      static HttpClient client = new HttpClient();
+
+      public static async Task recognizeFace(string image_path){
+
+         var request = new MultipartFormDataContent();
+         var image_data = File.OpenRead(image_path);
+         request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+         var output = await client.PostAsync("http://localhost:80/v1/vision/face/recognize",request);
+         var jsonString = await output.Content.ReadAsStringAsync();
+         Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+         foreach (var user in response.predictions){
+
+            var width = user.x_max - user.x_min;
+            var height = user.y_max - user.y_min;
+
+            var crop_region = new Rectangle(user.x_min,user.y_min,width,height);
+
+            using(var image = Image.Load(image_path)){
+
+                  image.Mutate(x => x
+                  .Crop(crop_region)
+                  );
+                  image.Save(user.userid + ".jpg");
+
+            }
+
+         }
+
+         }
+
+         static void Main(string[] args){
+
+            recognizeFace("test-image2.jpg").Wait();
+
+         }
+
+      }
+
+      }
 
 
 .. figure:: ../static/idriselba3.jpg
@@ -168,19 +432,104 @@ The min_confidence parameter allows you to increase or reduce the minimum confid
 
 We lower the confidence allowed below.
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   image_data = open("test-image2.jpg","rb").read()
+      import requests
 
-   response = requests.post("http://localhost:80/v1/vision/face/recognize",
-   files={"image":image_data},data={"min_confidence":0.40}).json()
+      image_data = open("test-image2.jpg","rb").read()
 
-   for user in response["predictions"]:
-      print(user["userid"])
+      response = requests.post("http://localhost:80/v1/vision/face/recognize",
+      files={"image":image_data},data={"min_confidence":0.40}).json()
 
-   print("Full Response: ",response)
+      for user in response["predictions"]:
+         print(user["userid"])
+
+      print("Full Response: ",response)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      image_stream = fs.createReadStream("test-image2.jpg")
+
+      var form = {"image":image_stream,"min_confidence":0.30}
+
+      request.post({url:"http://localhost:80/v1/vision/face/recognize", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         predictions = response["predictions"]
+         for(var i =0; i < predictions.length; i++){
+            pred = predictions[i]
+            console.log(pred["userid"])
+         }
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+      using Newtonsoft.Json;
+
+
+      namespace appone
+      {
+
+      class Response {
+
+      public bool success {get;set;}
+      public Face[] predictions {get;set;}
+
+      }
+
+      class Face {
+
+      public string userid {get;set;}
+      public float confidence {get;set;}
+      public int y_min {get;set;}
+      public int x_min {get;set;}
+      public int y_max {get;set;}
+      public int x_max {get;set;}
+
+      }
+
+      class App {
+
+      static HttpClient client = new HttpClient();
+
+      public static async Task recognizeFace(string image_path){
+
+         var request = new MultipartFormDataContent();
+         var image_data = File.OpenRead(image_path);
+         request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+         request.Add(new StringContent("0.30"),"min_confidence");
+         var output = await client.PostAsync("http://localhost:80/v1/vision/face/recognize",request);
+         var jsonString = await output.Content.ReadAsStringAsync();
+         Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+         foreach (var user in response.predictions){
+
+            Console.WriteLine(user.userid);
+
+         }
+
+         Console.WriteLine(jsonString);
+
+      }
+
+      static void Main(string[] args){
+
+         recognizeFace("test-image2.jpg").Wait();
+
+      }
+
+      }
+
+      }
 
 
 .. code-block:: text
@@ -202,12 +551,58 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 **Listing faces**
 
-.. code-block:: python
+.. tabs::
 
-   import requests
-   faces = requests.post("http://localhost:80/v1/vision/face/list").json()
+   .. code-tab:: python
 
-   print(faces)
+      import requests
+      faces = requests.post("http://localhost:80/v1/vision/face/list").json()
+
+      print(faces)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+
+      request.post("http://localhost:80/v1/vision/face/list",function(err,res,body){
+
+         response = JSON.parse(body)
+         console.log(response)
+
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+
+      namespace app
+      {
+
+      class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task listFaces(){
+
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/list",null);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            listFaces().Wait();
+
+         }
+
+      }
+
+      }
 
 
 **Response**
@@ -220,14 +615,65 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 **Deleting a face**
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   response = requests.post("http://localhost:80/v1/vision/face/delete",
-   data={"userid":"Idris Elba"}).json()
+      import requests
 
-   print(response)
+      response = requests.post("http://localhost:80/v1/vision/face/delete",
+      data={"userid":"Idris Elba"}).json()
+
+      print(response)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+
+      var form = {"userid":"Idris Elba"}
+
+      request.post({url:"http://localhost:80/v1/vision/face/delete", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         console.log(response)
+      })
+         
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+
+      namespace app
+      {
+
+      class App {
+
+
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task registerFace(string userid){
+
+            var request = new MultipartFormDataContent();
+            request.Add(new StringContent(userid),"userid");
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/delete",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            registerFace("Idris Elba").Wait();
+
+         }
+
+      }
+
+      }
 
 **Reponse**
 
@@ -238,17 +684,99 @@ The face recognition API allows you to retrieve and delete faces that have been 
 Having deleted Idris Elba from our database, we shall now attempt to recognize him in our test image.
 
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   image_data = open("test-image2.jpg","rb").read()
+      import requests
 
-   response = requests.post("http://localhost:80/v1/vision/face/recognize",
-   files={"image":image_data}).json()
+      image_data = open("test-image2.jpg","rb").read()
 
-   for user in response["predictions"]:
-      print(user["userid"])
+      response = requests.post("http://localhost:80/v1/vision/face/recognize",
+      files={"image":image_data}).json()
+
+      for user in response["predictions"]:
+         print(user["userid"])
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      image_stream = fs.createReadStream("test-image2.jpg")
+
+      var form = {"image":image_stream}
+
+      request.post({url:"http://localhost:80/v1/vision/face/recognize", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         predictions = response["predictions"]
+         for(var i =0; i < predictions.length; i++){
+            pred = predictions[i]
+            console.log(pred["userid"])
+         }
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+      using Newtonsoft.Json;
+
+
+      namespace appone
+      {
+
+      class Response {
+
+         public bool success {get;set;}
+         public Face[] predictions {get;set;}
+
+      }
+
+      class Face {
+
+         public string userid {get;set;}
+         public float confidence {get;set;}
+         public int y_min {get;set;}
+         public int x_min {get;set;}
+         public int y_max {get;set;}
+         public int x_max {get;set;}
+
+      }
+
+      class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task recognizeFace(string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/face/recognize",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+            Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            foreach (var user in response.predictions){
+
+                  Console.WriteLine(user.userid);
+
+            }
+
+         }
+
+         static void Main(string[] args){
+
+            recognizeFace("test-image2.jpg").Wait();
+
+         }
+
+      }
+
+      }
 
 
 **Response**
