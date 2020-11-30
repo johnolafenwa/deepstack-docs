@@ -16,4 +16,4 @@ jobs:
         password: ${{ secrets.DOCKER_ACCESS }}
         tags: "latest, v1"
         default_branch: main
-        dockerfile: Dockerfile.python
+        dockerfile: Dockerfile
