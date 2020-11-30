@@ -88,17 +88,78 @@ The configuration file contains all the information about the preprocessing and 
 
 **Step 3 : Register Your Model**
 
-.. code-block:: python
+.. tabs:: 
 
-    import requests
-    from io import  open
+    .. code-tab:: python
 
-    model = open("idenprof.onnx","rb").read()
-    config = open("config.json","rb").read()
+        import requests
+        from io import  open
 
-    response = requests.post("http://localhost:80/v1/vision/addmodel",
-    files={"model":model,"config":config},data={"name":"profession"}).json()
-    print(response)
+        model = open("idenprof.onnx","rb").read()
+        config = open("config.json","rb").read()
+
+        response = requests.post("http://localhost:80/v1/vision/addmodel",
+        files={"model":model,"config":config},data={"name":"profession"}).json()
+        print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        model = fs.createReadStream("idenprof.onnx")
+        config = fs.createReadStream("config.json")
+
+        var form = {"model":image_stream, "config":config,"name":"profession"}
+
+        request.post({url:"http://localhost:80/v1/vision/addmodel", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+
+            console.log(response)
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var model = File.OpenRead("idenprof.onnx");
+                var config = File.OpenRead("config.json");
+                request.Add(new StreamContent(model),"model",Path.GetFileName("idenprof.onnx"));
+                request.Add(new StreamContent(config),"config",Path.GetFileName("config.json"));
+                request.Add(new StringContent("profession"),"name");
+                var output = await client.PostAsync("http://localhost:80/v1/vision/addmodel",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 The code above, uploads the model and the config file to your local DeepStack server, also, the **{'name':'profession'}** specifies the unique name for the model. This model will be served on the endpoint **http://localhost:80/v1/vision/custom/profession**
 
@@ -112,16 +173,70 @@ Testing Your Custom Model
 
 Below, we shall attempt to use our custom model to predict the class of the image below
 
-.. code-block:: python
+.. tabs::
 
-    import requests
+    .. code-tab:: python
 
-    image_data = open("test-custom-image.jpg","rb").read()
+        import requests
 
-    response = requests.post("http://localhost:80/v1/vision/custom/profession",
-    files={"image":image_data}).json()
-    print("Label:",response["label"])
-    print(response)
+        image_data = open("test-custom-image.jpg","rb").read()
+
+        response = requests.post("http://localhost:80/v1/vision/custom/profession",
+        files={"image":image_data}).json()
+        print("Label:",response["label"])
+        print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream = fs.createReadStream("test-custom-image.jpg")
+
+        var form = {"image":image_stream}
+
+        request.post({url:"http://localhost:80/v1/vision/custom/profession", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            console.log(response)
+        }
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var image_data = File.OpenRead("test-custom-image.jpg");
+                request.Add(new StreamContent(image_data),"image",Path.GetFileName("test-custom-image.jpg"));
+                var output = await client.PostAsync("http://localhost:80/v1/vision/custom/profession",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 **Response**
 
@@ -178,17 +293,78 @@ The config file is essentially the same, except that the framework should be cha
 
 Now, we can register the model in the same way.
 
-.. code-block:: python:
+.. tabs::
 
-    import requests
-    from io import  open
+    .. code-tab:: python
 
-    model = open("idenprof.h5","rb").read()
-    config = open("config.json","rb").read()
+        import requests
+        from io import  open
 
-    response = requests.post("http://localhost:80/v1/vision/addmodel",
-    files={"model":model,"config":config},data={"name":"profession"}).json()
-    print(response)
+        model = open("idenprof.h5","rb").read()
+        config = open("config.json","rb").read()
+
+        response = requests.post("http://localhost:80/v1/vision/addmodel",
+        files={"model":model,"config":config},data={"name":"profession"}).json()
+        print(response)
+
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        model = fs.createReadStream("idenprof.h5")
+        config = fs.createReadStream("config.json")
+
+        var form = {"model":image_stream, "config":config,"name":"profession"}
+
+        request.post({url:"http://localhost:80/v1/vision/addmodel", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+
+            console.log(response)
+        })
+
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var model = File.OpenRead("idenprof.h5");
+                var config = File.OpenRead("config.json");
+                request.Add(new StreamContent(model),"model",Path.GetFileName("idenprof.h5"));
+                request.Add(new StreamContent(config),"config",Path.GetFileName("config.json"));
+                request.Add(new StringContent("profession"),"name");
+                var output = await client.PostAsync("http://localhost:80/v1/vision/addmodel",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 
 You can test your Keras model using the Example Code in previous section (Testing Your Custom Model)
@@ -239,17 +415,78 @@ Now, we can register the model in the same way.
 
 **Step 3 : Register Your Model**
 
-.. code-block:: python
+.. tabs::
 
-    import requests
-    from io import  open
+    .. code-tab:: python
 
-    model = open("idenprof.pb","rb").read()
-    config = open("config.json","rb").read()
+        import requests
+        from io import  open
 
-    response = requests.post("http://localhost:80/v1/vision/addmodel",
-    files={"model":model,"config":config},data={"name":"profession"}).json()
-    print(response)
+        model = open("idenprof.pb","rb").read()
+        config = open("config.json","rb").read()
+
+        response = requests.post("http://localhost:80/v1/vision/addmodel",
+        files={"model":model,"config":config},data={"name":"profession"}).json()
+        print(response)
+
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        model = fs.createReadStream("idenprof.pb")
+        config = fs.createReadStream("config.json")
+
+        var form = {"model":image_stream, "config":config,"name":"profession"}
+
+        request.post({url:"http://localhost:80/v1/vision/addmodel", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+
+            console.log(response)
+        })
+
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var model = File.OpenRead("idenprof.pb");
+                var config = File.OpenRead("config.json");
+                request.Add(new StreamContent(model),"model",Path.GetFileName("idenprof.pb"));
+                request.Add(new StreamContent(config),"config",Path.GetFileName("config.json"));
+                request.Add(new StringContent("profession"),"name");
+                var output = await client.PostAsync("http://localhost:80/v1/vision/addmodel",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 You can test your Tensorflow model using the Example Code in previous sections (Testing Your Custom Model)
 
