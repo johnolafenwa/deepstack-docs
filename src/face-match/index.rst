@@ -14,16 +14,73 @@ The face match api compares faces in two different pictures and tells the simila
 
 .. figure:: ../static/obama2.jpg
 
-.. code-block:: python
+.. tabs::
 
-    import requests
+    .. code-tab:: python
 
-    image_data1 = open("obama1.jpg","rb").read()
-    image_data2 = open("obama2.jpg","rb").read()
+        import requests
 
-    response = requests.post("http://localhost:80/v1/vision/face/match",files={"image1":image_data1,"image2":image_data2}).json()
+        image_data1 = open("obama1.jpg","rb").read()
+        image_data2 = open("obama2.jpg","rb").read()
 
-    print(response)
+        response = requests.post("http://localhost:80/v1/vision/face/match",files={"image1":image_data1,"image2":image_data2}).json()
+
+        print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream1 = fs.createReadStream("obama1.jpg")
+        image_stream2 = fs.createReadStream("obama2.jpg")
+
+        var form = {"image1":image_stream1,"image2":image_stream2}
+
+        request.post({url:"http://localhost:80/v1/vision/face/match", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            console.log(response)
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var image_data1 = File.OpenRead("obama1.jpg");
+                var image_data2 = File.OpenRead("obama2.jpg");
+                request.Add(new StreamContent(image_data1),"image1",Path.GetFileName("test-image6.jpeg"));
+                request.Add(new StreamContent(image_data2),"image2",Path.GetFileName("test-image7.jpg"));
+                var output = await client.PostAsync("http://localhost:80/v1/vision/face/match",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 **Response**
 
@@ -40,16 +97,73 @@ Here we shall compare a picture of Obama with that of Bradley Cooper.
 
 .. figure:: ../static/brad.jpg
 
-.. code-block:: python
+.. tabs::
 
-    import requests
+    .. code-tab:: python
 
-    image_data1 = open("obama2.jpg","rb").read()
-    image_data2 = open("brad.jpg","rb").read()
+        import requests
 
-    response = requests.post("http://localhost:80/v1/vision/face/match",files={"image1":image_data1,"image2":image_data2}).json()
+        image_data1 = open("obama2.jpg","rb").read()
+        image_data2 = open("brad.jpg","rb").read()
 
-    print(response)
+        response = requests.post("http://localhost:80/v1/vision/face/match",files={"image1":image_data1,"image2":image_data2}).json()
+
+        print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream1 = fs.createReadStream("obama2.jpeg")
+        image_stream2 = fs.createReadStream("brad.jpg")
+
+        var form = {"image1":image_stream1,"image2":image_stream2}
+
+        request.post({url:"http://localhost:80/v1/vision/face/match", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            console.log(response)
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+
+
+        namespace app
+        {
+
+            class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task makeRequest(){
+
+                var request = new MultipartFormDataContent();
+                var image_data1 = File.OpenRead("obama2.jpg");
+                var image_data2 = File.OpenRead("brad.jpg");
+                request.Add(new StreamContent(image_data1),"image1",Path.GetFileName("test-image6.jpeg"));
+                request.Add(new StreamContent(image_data2),"image2",Path.GetFileName("test-image8.jpg"));
+                var output = await client.PostAsync("http://localhost:80/v1/vision/face/match",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+
+                Console.WriteLine(jsonString);
+
+            }
+
+            static void Main(string[] args){
+
+                makeRequest().Wait();
+
+            }
+
+            }
+
+        }
 
 **Response**
 
