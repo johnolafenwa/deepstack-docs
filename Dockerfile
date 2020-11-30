@@ -1,17 +1,22 @@
 FROM python:3.6-slim
 
+# Install Dependecies
 RUN apt update
 RUN apt install -y npm
-RUN npm install -y -g yarn
-RUN yarn global add serve
+RUN npm install --global http-server
 RUN pip3 install Sphinx
-RUN pip install sphinxawesome-theme
+RUN pip3 install sphinxawesome-theme
+RUN pip3 install sphinx-tabs
 RUN apt-get install -y make
+RUN pip3 install boto3
 
+# Copy Project
 COPY . /
 
-RUN cd /src/python && make html
+#  Build Python documentation
+RUN cd /src && make html
+# Expose port
+EXPOSE 80
 
-EXPOSE 5000
-
-CMD [ "serve", "/src/python/build/html"]
+# Run Python documentation with TLS
+CMD [ "http-server", "/src/build/html", "-p", "80"]
