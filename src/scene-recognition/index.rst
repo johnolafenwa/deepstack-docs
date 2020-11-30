@@ -52,15 +52,70 @@ Start the **DeepStack App**, Click *Start Server*, Select the **SCENE API** and 
 
 .. figure:: ../static/office.jpg
 
-.. code-block:: python
+.. tabs::
 
-   import requests
+   .. code-tab:: python
 
-   image_data = open("office.jpg","rb").read()
+      import requests
 
-   response = requests.post("http://localhost:80/v1/vision/scene",files={"image":image_data}).json()
-   print("Label:",response["label"])
-   print(response)
+      image_data = open("office.jpg","rb").read()
+
+      response = requests.post("http://localhost:80/v1/vision/scene",files={"image":image_data}).json()
+      print("Label:",response["label"])
+      print(response)
+   
+   .. code-tab:: js
+
+      const request = require("request")
+      const fs = require("fs")
+
+      image_stream = fs.createReadStream("office.jpg")
+
+      var form = {"image":image_stream}
+
+      request.post({url:"http://localhost:80/v1/vision/scene", formData:form},function(err,res,body){
+
+         response = JSON.parse(body)
+         console.log(response)
+      })
+   
+   .. code-tab:: c#
+
+      using System;
+      using System.IO;
+      using System.Net.Http;
+      using System.Threading.Tasks;
+
+
+      namespace app
+      {
+
+         class App {
+
+         static HttpClient client = new HttpClient();
+
+         public static async Task makeRequest(){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead("office.jpg");
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName("office.jpg"));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/scene",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+         }
+
+         static void Main(string[] args){
+
+            makeRequest().Wait();
+
+         }
+
+         }
+
+      }
+
 
 
 **Response**
