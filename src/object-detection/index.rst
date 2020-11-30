@@ -76,20 +76,91 @@ Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** 
             print(object["label"])
 
         print(response)
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream = fs.createReadStream("test-image3.jpg")
+
+        var form = {"image":image_stream}
+
+        request.post({url:"http://localhost:80/v1/vision/detection", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+            for(var i =0; i < predictions.length; i++){
+
+                console.log(predictions[i]["label"])
+
+            }
+
+            console.log(response)
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+        using Newtonsoft.Json;
 
 
-.. code-block:: python
+        namespace appone
+        {
 
-    import requests
+        class Response {
 
-    image_data = open("test-image3.jpg","rb").read()
+            public bool success {get;set;}
+            public Object[] predictions {get;set;}
 
-    response = requests.post("http://localhost:80/v1/vision/detection",files={"image":image_data}).json()
+        }
 
-    for object in response["predictions"]:
-        print(object["label"])
+        class Object {
 
-    print(response)
+            public string label {get;set;}
+            public float confidence {get;set;}
+            public int y_min {get;set;}
+            public int x_min {get;set;}
+            public int y_max {get;set;}
+            public int x_max {get;set;}
+
+        }
+
+        class App {
+
+            static HttpClient client = new HttpClient();
+
+            public static async Task detectFace(string image_path){
+
+                var request = new MultipartFormDataContent();
+                var image_data = File.OpenRead(image_path);
+                request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+                var output = await client.PostAsync("http://localhost:80/v1/vision/detection",request);
+                var jsonString = await output.Content.ReadAsStringAsync();
+                Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+                foreach (var user in response.predictions){
+
+                    Console.WriteLine(user.label);
+
+                }
+
+                Console.WriteLine(jsonString);
+
+            }
+
+            static void Main(string[] args){
+
+                detectFace("test-image3.jpg").Wait();
+
+            }
+
+        }
+
+        }
 
 
 **Response**
@@ -104,27 +175,146 @@ Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** 
 
 We can use the coordinates returned to extract the objects
 
-.. code-block:: python
+.. tabs::
 
-    import requests
-    from PIL import Image
+    .. code-tab:: python
 
-    image_data = open("test-image3.jpg","rb").read()
-    image = Image.open("test-image3.jpg").convert("RGB")
+        import requests
+        from PIL import Image
 
-    response = requests.post("http://localhost:80/v1/vision/detection",files={"image":image_data}).json()
-    i = 0
-    for object in response["predictions"]:
+        image_data = open("test-image3.jpg","rb").read()
+        image = Image.open("test-image3.jpg").convert("RGB")
 
-        label = object["label"]
-        y_max = int(object["y_max"])
-        y_min = int(object["y_min"])
-        x_max = int(object["x_max"])
-        x_min = int(object["x_min"])
-        cropped = image.crop((x_min,y_min,x_max,y_max))
-        cropped.save("image{}_{}.jpg".format(i,label))
+        response = requests.post("http://localhost:80/v1/vision/detection",files={"image":image_data}).json()
+        i = 0
+        for object in response["predictions"]:
 
-        i += 1
+            label = object["label"]
+            y_max = int(object["y_max"])
+            y_min = int(object["y_min"])
+            x_max = int(object["x_max"])
+            x_min = int(object["x_min"])
+            cropped = image.crop((x_min,y_min,x_max,y_max))
+            cropped.save("image{}_{}.jpg".format(i,label))
+
+            i += 1
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+        const easyimage = require("easyimage")
+
+        image_stream = fs.createReadStream("test-image3.jpg")
+
+        var form = {"image":image_stream}
+
+        request.post({url:"http://localhost:80/v1/vision/detection", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+            for(var i =0; i < predictions.length; i++){
+
+                pred = predictions[i]
+                label = pred["label"]
+                y_min = pred["y_min"]
+                x_min = pred["x_min"]
+                y_max = pred["y_max"]
+                x_max = pred["x_max"]
+
+                easyimage.crop(
+                    {
+                    src: "test-image3.jpg",
+                    dst: i.toString() + "_" + label+"_.jpg",
+                    x: x_min,
+                    cropwidth: x_max - x_min,
+                    y: y_min,
+                    cropheight: y_max - y_min,
+                }
+            )
+
+            }
+
+        })
+    
+    .. code-tab:: c#
+
+        using System;
+        using System.IO;
+        using System.Net.Http;
+        using System.Threading.Tasks;
+        using Newtonsoft.Json;
+        using SixLabors.ImageSharp;
+        using SixLabors.ImageSharp.Processing;
+        using SixLabors.Primitives;
+
+        namespace appone
+        {
+
+        class Response {
+
+        public bool success {get;set;}
+        public Object[] predictions {get;set;}
+
+        }
+
+        class Object {
+
+        public string label {get;set;}
+        public float confidence {get;set;}
+        public int y_min {get;set;}
+        public int x_min {get;set;}
+        public int y_max {get;set;}
+        public int x_max {get;set;}
+
+        }
+
+        class App {
+
+        static HttpClient client = new HttpClient();
+
+        public static async Task recognizeFace(string image_path){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead(image_path);
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName(image_path));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/detection",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+            Response response = JsonConvert.DeserializeObject<Response>(jsonString);
+
+            var i = 0;
+
+            foreach (var user in response.predictions){
+
+                var width = user.x_max - user.x_min;
+                var height = user.y_max - user.y_min;
+
+                var crop_region = new Rectangle(user.x_min,user.y_min,width,height);
+
+                using(var image = Image.Load(image_path)){
+
+                    image.Mutate(x => x
+                    .Crop(crop_region)
+                    );
+                    image.Save(user.label + i.ToString() + "_.jpg");
+
+                }
+
+                i++;
+
+            }
+
+            }
+
+            static void Main(string[] args){
+
+                recognizeFace("test-image3.jpg").Wait();
+
+            }
+
+        }
+
+        }
 
 
 .. figure:: ../static/dog.jpg
@@ -143,15 +333,34 @@ The min_confidence parameter allows you to increase or reduce the minimum confid
 
 We lower the confidence allowed below.
 
-.. code-block:: python
+.. tabs::
 
-    import requests
+    .. code-tab:: python
 
-    image_data = open("test-image3.jpg","rb").read()
+        import requests
 
-    response = requests.post("http://localhost:80/v1/vision/detection",
-    files={"image":image_data},data={"min_confidence":0.30}).json()
+        image_data = open("test-image3.jpg","rb").read()
 
+        response = requests.post("http://localhost:80/v1/vision/detection",
+        files={"image":image_data},data={"min_confidence":0.30}).json()
+    
+    .. code-tab:: js
+
+        const request = require("request")
+        const fs = require("fs")
+
+        image_stream = fs.createReadStream("test-image3.jpg")
+
+        var form = {"image":image_stream, "min_confidence":0.30}
+
+        request.post({url:"http://localhost:80/v1/vision/detection", formData:form},function(err,res,body){
+
+            response = JSON.parse(body)
+            predictions = response["predictions"]
+
+            console.log(response)
+        })
+        
 
 CLASSES
 -------
