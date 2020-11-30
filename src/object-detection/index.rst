@@ -61,6 +61,23 @@ Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** 
 
 .. figure:: ../static/family-and-dog.jpg
 
+
+.. tabs::
+
+    .. code-tab:: python
+
+        import requests
+
+        image_data = open("test-image3.jpg","rb").read()
+
+        response = requests.post("http://localhost:80/v1/vision/detection",files={"image":image_data}).json()
+
+        for object in response["predictions"]:
+            print(object["label"])
+
+        print(response)
+
+
 .. code-block:: python
 
     import requests

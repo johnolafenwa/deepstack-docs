@@ -3,11 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-DeepStack - Python Guide!
-=========================
+DeepStack Documentation!
+========================
 
-Official Python Guide for DeepStack AI Server.
-----------------------------------------------
+Official Documentation and Guide for DeepStack AI Server.
+---------------------------------------------------------
 
 **DeepStack** is an AI server that empowers every developer in the world to easily build state-of-the-art AI systems both on premise and in the cloud. The promises of Artificial Intelligence are huge but becoming a machine learning engineer is hard. **DeepStack** is device and language agnostic. You can run it on **Windows**, **Mac OS**, **Linux**, **Raspberry PI** and use it with any programming language.
 
@@ -31,15 +31,69 @@ Example Code
 
 Using DeepStack, we can classify the scene of the above image as seen below.
 
-.. code-block:: python
+.. tabs::
 
-  import requests
+  .. code-tab:: python
 
-  image_data = open("image.jpg","rb").read()
+    import requests
 
-  response = requests.post("http://localhost:80/v1/vision/scene",
-  files={"image":image_data}).json()
-  print(response)
+    image_data = open("image.jpg","rb").read()
+
+    response = requests.post("http://localhost:80/v1/vision/scene",
+    files={"image":image_data}).json()
+    print(response)
+
+  .. code-tab:: js
+
+    const request = require("request")
+    const fs = require("fs")
+
+    image_stream = fs.createReadStream("image.jpg")
+
+    var form = {"image":image_stream}
+
+    request.post({url:"http://localhost:80/v1/vision/scene", formData:form},function(err,res,body){
+
+        response = JSON.parse(body)
+        console.log(response)
+    })
+  
+  .. code-tab:: c#
+
+    using System;
+    using System.IO;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+
+    namespace app
+    {
+
+        class App {
+
+        static HttpClient client = new HttpClient();
+
+        public static async Task makeRequest(){
+
+            var request = new MultipartFormDataContent();
+            var image_data = File.OpenRead("image.jpg");
+            request.Add(new StreamContent(image_data),"image",Path.GetFileName("image.jpg"));
+            var output = await client.PostAsync("http://localhost:80/v1/vision/scene",request);
+            var jsonString = await output.Content.ReadAsStringAsync();
+
+            Console.WriteLine(jsonString);
+
+        }
+
+        static void Main(string[] args){
+
+            makeRequest().Wait();
+
+        }
+
+        }
+
+    }
 
 **Response**
 
