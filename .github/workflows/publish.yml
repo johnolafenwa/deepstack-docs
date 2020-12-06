@@ -18,7 +18,7 @@ jobs:
         default_branch: main
         dockerfile: Dockerfile
   publish:
-    name: Deploy to Live Server
+    name: Deploy to Live Docs Server
     needs: build
     runs-on: ubuntu-latest
     steps:
