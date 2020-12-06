@@ -14,6 +14,24 @@ jobs:
         name: deepquestai/deepstack-docs
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
-        tags: "latest, v1"
+        tags: "latest, v1.0.1"
         default_branch: main
         dockerfile: Dockerfile
+  publish:
+    name: Deploy to Live Server
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy DeepStack Python Documentation
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.MACHINE_ADDRESS }}
+        username: root
+        password: ${{ secrets.MACHINE_ACCESS }}
+        port: 22
+        script: |
+          sudo docker pull deepquestai/deepstack-docs
+          sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
+          sudo docker run -d --name deepstack_docs -p 80:80 --restart unless-stopped deepquestai/deepstack-docs
+          sudo docker ps
+          exit
