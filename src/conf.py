@@ -22,7 +22,7 @@ copyright = '2020, DeepQuest AI'
 author = 'DeepQuest AI'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0'
+release = 'v1.0.1'
 
 
 # -- General configuration ---------------------------------------------------
