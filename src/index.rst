@@ -20,7 +20,7 @@ Top Features
 * `FACE DETECTION & RECOGNITION <face-recognition>`_
 * `OBJECT DETECTION <object-detection>`_
 * `SCENE RECOGNITION <scene-recognition>`_
-* `SUPPORT FOR CUSTOM ONNX, KERAS AND TENSORFLOW MODELS <custom-models>`_
+* `SUPPORT FOR CUSTOM OBJECT DETECTION <custom-models>`_
 * `IN-BUILT SECURITY <security>`_
 * `API REFERENCE <api-reference>`_
 
