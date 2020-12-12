@@ -167,6 +167,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    security/index
    backup/index
    using-deepstack-with-nvidia-gpus/index
+   nvidia-jetson/index
    raspberry-pi/index
    best-practices/index
    api-reference/index
