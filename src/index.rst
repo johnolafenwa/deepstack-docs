@@ -106,9 +106,11 @@ Using DeepStack, we can classify the scene of the above image as seen below.
 Installation
 ============
 
-**DeepStack** is available in three variants, **CPU Version**, **GPU Version** and **Raspberry PI Version** (With Support for Intel Neural Compute Stick)
+**DeepStack** is available in three variants, **CPU Version**, **GPU Version**, **NVIDIA Jetson** and **Raspberry PI Version** (With Support for Intel Neural Compute Stick)
 
 `Installation Guide for GPU Version <using-deepstack-with-nvidia-gpus>`_
+
+`Installation Guide for NVIDIA Jetson <nvidia-jetson>`_
 
 `Installation Guide for Raspberry Pi <raspberry-pi>`_
 
