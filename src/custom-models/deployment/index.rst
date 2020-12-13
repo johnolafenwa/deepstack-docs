@@ -8,7 +8,7 @@ Deploying Your Model With DeepStack
 Deploying Your Model to DeepStack is the simplest part, once you have downloaded the best.pth file from your training.
 
 Create a directory on your system to store your models, here we shall assume your folder is named ```my-models```
-Put your best.pth file in the folder and rename it to whatever you want it to be, here we assume you named it catsanddogs.pth
+Put your best.pth file in the folder and rename it to whatever you want it to be, here we assume you named it catsanddogs.pt
 
 Run DeepStack
 =============
