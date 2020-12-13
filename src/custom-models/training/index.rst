@@ -53,3 +53,15 @@ If you run your training multiple times, you will find exp1, exp2 folders and so
 
 As your training progresses, you will find the best.pth file in the ```weights``` folder above, for best results, you can wait till the end 
 of your training to copy the file. This is the file you will deploy with DeepStack.
+
+
+Important Parameters
+--------------------
+
+The following parameters can be set to optimize your model to suit you better
+
+* ```--model``` DeepStack trainer supports five model types, in order of increasing accuracy they are ```"yolov5s"```, ```"yolov5m"```, ```"yolov5l"```, ```"yolov5x"```. The default is yolov5m, the highest accuracy onces like yolov5l and yolov5x are much slower and will require higher end compute to deploy. The fastest yolov5s is highly recommended if deploying on the nvidia jetson. 
+
+* ```--batch-size``` This is the number of images processed at once, you can set this to a higher number like 32 or 64 as your gpu memory allows, if you use a gpu with lower memory, you can set this to a lower number like 8 or less if you run into memory problems. The default value is 16
+
+* ```epochs``` This is the number of iterations over your entire dataset, the default value is 300. You can always run with lesser epochs or more epochs, accuracy increases as you run more epochs.
