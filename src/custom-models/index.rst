@@ -11,7 +11,9 @@ For this, you can train a new model on your own images and deploy that to deepst
 Here we shall go over the full process of preparing your image dataset, training and deploying with DeepStack.
 
 Step 1: `Prepare Your Dataset <datasetprep>`_
+
 Step 2: `Train Your Model <training>`_
+
 Step 3: `Deploy Your Model <deployment>`_
 
 .. toctree::
