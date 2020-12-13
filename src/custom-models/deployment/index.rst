@@ -22,7 +22,7 @@ Below we start DeepStack
 
 .. code-block:: bash
 
-    sudo docker run -e VISION-DETECTION=True -v /path-to/my-models:/modelstore/detection -p 80:5000 \
+    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 \
     deepquestai/deepstack
 
 
@@ -30,9 +30,15 @@ Below we start DeepStack
 
 .. code-block:: bash
 
-    sudo docker run --gpus all -e VISION-DETECTION=True -v /path-to/my-models:/modelstore/detection \
+    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection \
     -p 80:5000 deepquestai/deepstack:gpu
 
+**Nvidia Jetson Version**
+
+.. code-block:: bash
+
+    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection \
+    -p 80:5000 deepquestai/deepstack:jetpack
 
 *Basic Parameters*
 

@@ -31,6 +31,13 @@ Below we start DeepStack with only the Detection APIs enabled.
     sudo docker run --gpus all -e VISION-DETECTION=True -v localstorage:/datastore \
     -p 80:5000 deepquestai/deepstack:gpu
 
+**Jetson Version**
+
+.. code-block:: bash
+
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -v localstorage:/datastore \
+    -p 80:5000 deepquestai/deepstack:gpu
+
 
 *Basic Parameters*
 

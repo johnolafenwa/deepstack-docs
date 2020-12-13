@@ -20,7 +20,7 @@ Step 1: Install LabelIMG
 
         pip3 install pyqt5 lxml
 
-    Download and unzip the file via https://www.dropbox.com/s/kqoxr10l3rkstqd/windows_v1.8.0.zip?dl=1
+    Download and unzip the file via https://github.com/johnolafenwa/DeepStack/releases/download/1.0/labelimgwindows.zip
 
 * For MacOS
 
