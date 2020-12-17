@@ -7,8 +7,9 @@ Custom Models
 =================
 
 .. raw:: html
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/wQKUQ6Y2n3Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/wQKUQ6Y2n3Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   
 DeepStack provides a simple API to detect common objects in images and videos. The Object detection API supports 80 objects. Often your use case might involve objects that deepstack doesn't natively support, or you might want to finetune the object detection for your own kind of images, probably cctv images or night images if the built in object detection API doesn't work perfectly enough for you.
 For this, you can train a new model on your own images and deploy that to deepstack.
 
