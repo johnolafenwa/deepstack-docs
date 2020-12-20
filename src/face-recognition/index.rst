@@ -37,6 +37,14 @@ Below we start DeepStack with only the face APIs enabled.
    -p 80:5000 deepquestai/deepstack:gpu
 
 
+Starting DeepStack on other Platforms
+-------------------------------------
+
+`DeepStack on Windows (CPU and GPU) <windows>`_
+
+`DeepStack on Raspberry PI <raspberry-pi>`_
+
+
 *Basic Parameters*
 
 **-e VISION-FACE=True** This enables the face recognition APIs, all apis are disabled by default.
@@ -44,20 +52,6 @@ Below we start DeepStack with only the face APIs enabled.
 **-v localstorage:/datastore** This specifies the local volume where deepstack will store all data.
 
 **-p 80:5000** This makes deepstack accessible via port 80 of the machine.
-
-
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
-
-   sudo deepstack start "VISION-FACE=True"
-
-
-Starting DeepStack on Windows
------------------------------
-
-Start the **DeepStack App**, Click Start **Server**, Select the **Face API** and click **Start Now**.
 
 
 Face Registration
@@ -820,11 +814,6 @@ You can specify a different mode during startup as seen below as seen below
 
 Note the **-e MODE=High** above
 
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/windows-mode.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

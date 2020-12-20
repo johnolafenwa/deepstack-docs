@@ -201,11 +201,6 @@ You can specify a different mode during startup as seen below as seen below
 
 Note the **-e MODE=High** above
 
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/windows-mode.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

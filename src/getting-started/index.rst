@@ -39,6 +39,15 @@ For **Jetson Version**
   sudo docker run --runtime nvidia -e VISION-FACE=True -v localstorage:/datastore \
   -p 80:5000 deepquestai/deepstack:gpu
 
+
+Starting DeepStack on other Platforms
+-------------------------------------
+
+`DeepStack on Windows (CPU and GPU) <windows>`_
+
+`DeepStack on Raspberry PI <raspberry-pi>`_
+
+
 *Basic Parameters*
 
 **-e VISION-FACE=True** This enables the face recognition APIs, all apis are disabled by default.
@@ -48,12 +57,6 @@ For **Jetson Version**
 **-p 80:5000** This makes deepstack accessible via port 80 of the machine.
 
 
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
-
-  sudo deepstack start "VISION-FACE=True"
 
 
 Face Recognition
@@ -300,10 +303,6 @@ You can specify a different mode during startup as seen below.
    -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
 Note the **-e MODE=High** above.
-
-On Windows, you can easily select the **High** mode in the UI.
-
-.. figure:: ../static/windows-mode.jpg
 
 
 .. toctree::

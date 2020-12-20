@@ -40,6 +40,14 @@ Below we start DeepStack
     sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection \
     -p 80:5000 deepquestai/deepstack:jetpack
 
+
+Starting DeepStack on other Platforms
+-------------------------------------
+
+`DeepStack on Windows (CPU and GPU) <windows>`_
+
+`DeepStack on Raspberry PI <raspberry-pi>`_
+
 *Basic Parameters*
 
 **-v /path-to/my-models:/modelstore/detection** This specifies the local directory where you stored your custom models

@@ -39,6 +39,14 @@ Below we start DeepStack with only the Detection APIs enabled.
     -p 80:5000 deepquestai/deepstack:gpu
 
 
+Starting DeepStack on other Platforms
+-------------------------------------
+
+`DeepStack on Windows (CPU and GPU) <windows>`_
+
+`DeepStack on Raspberry PI <raspberry-pi>`_
+
+
 *Basic Parameters*
 
 **-e VISION-DETECTION=True** This enables the object detection API, all apis are disabled by default.
@@ -47,21 +55,6 @@ Below we start DeepStack with only the Detection APIs enabled.
 
 **-p 80:5000** This makes deepstack accessible via port 80 of the machine.
 
-
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
-
-    sudo deepstack start "VISION-DETECTION=True"
-
-
-Starting DeepStack on Windows
------------------------------
-
-Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** and click *Start Now* .
-
-.. figure:: ../static/object-detection.png
 
 
 **Example**
@@ -416,11 +409,6 @@ You can specify a different mode during startup as seen below as seen below
 
 Note the **-e MODE=High** above
 
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/detection-high.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

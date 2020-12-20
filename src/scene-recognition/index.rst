@@ -32,20 +32,13 @@ Below we start DeepStack with only the Scene APIs enabled.
     -p 80:5000 deepquestai/deepstack:gpu
 
 
-Starting DeepStack on Raspberry PI
-----------------------------------
+Starting DeepStack on other Platforms
+-------------------------------------
 
-.. code-block:: bash
+`DeepStack on Windows (CPU and GPU) <windows>`_
 
-    sudo deepstack start "VISION-SCENE=True"
+`DeepStack on Raspberry PI <raspberry-pi>`_
 
-
-Starting DeepStack on Windows
------------------------------
-
-Start the **DeepStack App**, Click *Start Server*, Select the **SCENE API** and click *Start Now* .
-
-.. figure:: ../static/scene-windows.jpg
 
 
 **Example**

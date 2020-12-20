@@ -32,11 +32,13 @@ You can specify the api key during startup of deepstack.
     sudo docker run --gpus all -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
 
-**On Raspberry PI, specify the key as below**
+Starting DeepStack on other Platforms
+-------------------------------------
 
-.. code-block:: bash
+`DeepStack on Windows (CPU and GPU) <windows>`_
 
-    sudo deepstack start "VISION-SCENE=True API-KEY=Mysecretkey"
+`DeepStack on Raspberry PI <raspberry-pi>`_
+
 
 The command **-e API-KEY=Mysecretkey** sets **Mysecretkey** as the api key.
 
