@@ -1,5 +1,7 @@
 # DeepStack Documentation
-This repository contains the source code and content for **DeepStack AI Server** official documentation site [https://docs.deepstack.cc](https://docs.deepstack.cc), owned by [DeepQuest AI](https://deepquestai.com/) . The content of the documentation includes the following
+This repository contains the source code and content for **DeepStack AI Server** official documentation site [https://docs.deepstack.cc](https://docs.deepstack.cc), owned by [DeepQuest AI](https://deepquestai.com/). The docs are generated using [Sphinx](https://www.sphinx-doc.org/en/master/index.html).
+
+The content of the documentation includes the following:
 
 - Installation instructions across all supported platforms
 - Python, NodeJS and C# example codes for all supported `APIs and features`
@@ -39,3 +41,10 @@ Feel free to submit a `pull request` to update the documentation. It will be rev
 
     E.g `v1.0.1` >> `v1.1.0`
 
+# Build and run locally
+View your changes before creating a pull-request:
+```
+docker build -t deepstack-docs .
+docker run -p 80:80 deepstack-docs
+```
+Navigate to [localhost](http://localhost) to view the docs.
