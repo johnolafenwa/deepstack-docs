@@ -112,6 +112,8 @@ Installation
 
 `Installation Guide for NVIDIA Jetson <nvidia-jetson>`_
 
+`Installation Guide for Windows ( CPU and GPU ) <windows>`_
+
 `Installation Guide for Raspberry Pi <raspberry-pi>`_
 
 Installation Guide for CPU Version
@@ -167,6 +169,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    security/index
    backup/index
    using-deepstack-with-nvidia-gpus/index
+   windows/index
    nvidia-jetson/index
    raspberry-pi/index
    best-practices/index
