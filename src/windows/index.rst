@@ -64,6 +64,15 @@ For custom models, add **--MODELSTORE-DETECTION** to your command as seen in the
 
 
 
+Speed Modes
+-----------
+
+For speed modes, add **--MODE mode** (where mode can be **High**, **Medium** and **Low** )  to your command as seen in the sample below
+
+.. code-block:: bash
+
+    deepstack --VISION-DETECTION True --MODE High --PORT 80
+
 API and Admin Keys
 ------------------
 For API and Admin keys, add **--API-KEY** and **--ADMIN-KEY** respectively to your command as seen in the sample below
