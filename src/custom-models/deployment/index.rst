@@ -8,7 +8,7 @@ Deploying Your Model With DeepStack
 Deploying Your Model to DeepStack is the simplest part, once you have downloaded the best.pth file from your training.
 
 Create a directory on your system to store your models, here we shall assume your folder is named ```my-models```
-Put your best.pth file in the folder and rename it to whatever you want it to be, here we assume you named it catsanddogs.pth
+Put your best.pth file in the folder and rename it to whatever you want it to be, here we assume you named it catsanddogs.pt
 
 Run DeepStack
 =============
@@ -22,7 +22,7 @@ Below we start DeepStack
 
 .. code-block:: bash
 
-    sudo docker run -e VISION-DETECTION=True -v /path-to/my-models:/modelstore/detection -p 80:5000 \
+    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 \
     deepquestai/deepstack
 
 
@@ -30,9 +30,15 @@ Below we start DeepStack
 
 .. code-block:: bash
 
-    sudo docker run --gpus all -e VISION-DETECTION=True -v /path-to/my-models:/modelstore/detection \
+    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection \
     -p 80:5000 deepquestai/deepstack:gpu
 
+**Nvidia Jetson Version**
+
+.. code-block:: bash
+
+    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection \
+    -p 80:5000 deepquestai/deepstack:jetpack
 
 *Basic Parameters*
 

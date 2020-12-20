@@ -20,7 +20,7 @@ Step 1: Install LabelIMG
 
         pip3 install pyqt5 lxml
 
-    Download and unzip the file via https://www.dropbox.com/s/kqoxr10l3rkstqd/windows_v1.8.0.zip?dl=1
+    Download and unzip the file via https://github.com/johnolafenwa/DeepStack/releases/download/1.0/labelimgwindows.zip
 
 * For MacOS
 
@@ -134,7 +134,7 @@ you have images image_1.jpg, image_2.jpg …… image_z.jpg
 the XML annotations file will be saved as image_1.xml, image_2.xml,…. image_z.xml
 
 
-Annotat Your Test Dataset
+Annotate Your Test Dataset
 =========================
 Repeat the process above for your test folder as well.
 

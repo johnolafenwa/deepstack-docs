@@ -31,7 +31,7 @@ Step 2: Install DeepStack GPU for Jetson
 
 .. code-block:: bash
 
-    sudo docker pull deepquestai/deepstack:jetpack-x1-beta
+    sudo docker pull deepquestai/deepstack:jetpack
 
 
 Step 3: RUN DeepStack GPU on Jetson
@@ -41,7 +41,7 @@ Once the above steps are complete, when you run deepstack, add the args **–gpu
 
 .. code-block:: bash
 
-    sudo docker run --runtime nvidia -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:jetpack-x1-beta
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:jetpack
 
 
 To run with the face apis, simply use -e **VISION-FACE=True** instead, for scene, use -e **VISION-SCENE=True**.
