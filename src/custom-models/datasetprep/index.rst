@@ -134,7 +134,7 @@ you have images image_1.jpg, image_2.jpg …… image_z.jpg
 the XML annotations file will be saved as image_1.xml, image_2.xml,…. image_z.xml
 
 
-Annotat Your Test Dataset
+Annotate Your Test Dataset
 =========================
 Repeat the process above for your test folder as well.
 
