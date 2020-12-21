@@ -167,7 +167,7 @@ Run the command below as it applies to the version you have installed
 
 *Basic Parameters*
 
-**-e VISION-SCENE=True** This enables the scene recognition API, all apis are disabled by default.
+**-e VISION-SCENE=True** This enables the scene recognition API.
 
 **-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 

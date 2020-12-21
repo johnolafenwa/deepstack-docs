@@ -74,7 +74,7 @@ Once the above steps are complete, when you run DeepStack, add the args **–gpu
 
 **--gpus all** This enables gpu access to the DeepStack container
 
-**-e VISION-SCENE=True** This enables the scene recognition API, all apis are disabled by default.
+**-e VISION-SCENE=True** This enables the scene recognition API.
 
 **-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 

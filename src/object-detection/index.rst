@@ -42,7 +42,7 @@ Run the command below as it applies to the version you have installed
 
 *Basic Parameters*
 
-**-e VISION-DETECTION=True** This enables the object detection API, all apis are disabled by default.
+**-e VISION-DETECTION=True** This enables the object detection API.
 
 **-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 

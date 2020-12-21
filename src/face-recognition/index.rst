@@ -39,7 +39,7 @@ Run the command below as it applies to the version you have installed
 
 *Basic Parameters*
 
-**-e VISION-FACE=True** This enables the face recognition APIs, all apis are disabled by default.
+**-e VISION-FACE=True** This enables the face recognition APIs.
 
 **-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 

@@ -50,7 +50,7 @@ To run with the face apis, simply use -e **VISION-FACE=True** instead, for scene
 
 **--runtime nvidia** This enables gpu access to the DeepStack container
 
-**-e VISION-DETECTION=True** This enables the detection API, all apis are disabled by default.
+**-e VISION-DETECTION=True** This enables the detection API.
 
 **-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
