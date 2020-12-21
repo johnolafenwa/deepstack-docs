@@ -227,16 +227,6 @@ Run the command below as it applies to the version you have installed
 The command **-e ADMIN-KEY=Secretadminkey sets** **Secretadminkey** as the admin key. In this example, the API key is also set, note that you can set either without setting the other.
 
 
-**On Raspberry PI, specify the key as below.**
-
-.. code-block:: bash
-
-    sudo deepstack start "VISION-SCENE=True ADMIN-KEY=Secretadminkey"
-
-
-**On Windows, simply type in the API Key in the Start Up Interface.**
-
-
 Once you set an Admin key, you need to specify it when making admin calls such as backup, restore and model management.
 
 Example below is for adding models.
