@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -62,7 +62,7 @@ If you are running an old system without modern cpu instructions such as AVX, pl
 Step 5: RUN DeepStack with GPU Access
 -------------------------------------
 
-Once the above steps are complete, when you run deepstack, add the args **–gpus all**
+Once the above steps are complete, when you run DeepStack, add the args **–gpus all**
 
 .. code-block:: bash
 

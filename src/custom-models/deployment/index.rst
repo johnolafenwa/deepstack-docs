@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -42,7 +42,7 @@ Run the command below as it applies to the version you have installed
 
 **-v /path-to/my-models:/modelstore/detection** This specifies the local directory where you stored your custom models
 
-**-p 80:5000** This makes deepstack accessible via port 80 of the machine.
+**-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
 Run Inference
 =============

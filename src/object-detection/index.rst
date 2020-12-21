@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -44,9 +44,9 @@ Run the command below as it applies to the version you have installed
 
 **-e VISION-DETECTION=True** This enables the object detection API, all apis are disabled by default.
 
-**-v localstorage:/datastore** This specifies the local volume where deepstack will store all data.
+**-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 
-**-p 80:5000** This makes deepstack accessible via port 80 of the machine.
+**-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
 
 

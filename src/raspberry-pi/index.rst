@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -39,7 +39,7 @@ Using DeepStack
 
 Due to a number of factors, running DeepStack on the PI is slightly different.
 
-Below are the various ways to run deepstack. Ensure the NCS is plugged in before running deepstack.
+Below are the various ways to run DeepStack. Ensure the NCS is plugged in before running DeepStack.
 
 **Running with Scene Recognition**
 
@@ -93,7 +93,7 @@ Limitations
 Known Issues
 ------------
 
-**DeepStack Not Responding :** This might occur if you start DeepStack without the NCS plugged in or you sometimes when you stop and rerun DeepStack. In any case, simply restart your Raspberry PI, plug in the NCS and start deepstack. 
+**DeepStack Not Responding :** This might occur if you start DeepStack without the NCS plugged in or you sometimes when you stop and rerun DeepStack. In any case, simply restart your Raspberry PI, plug in the NCS and start DeepStack. 
 
 **Invalid Image :** This can occur if you send a very high resolution image, about 2000px * 2000px, to the **object detection** or **face** APIs. 
 
