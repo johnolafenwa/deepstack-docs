@@ -11,10 +11,6 @@ DeepStack CPU and GPU Version is now available for the Windows operating System.
 
 .. figure:: ../static/windows.jpeg
 
-
-Follow the steps below to install DeepStack on a Jetson device.
-
-
 Install DeepStack CPU
 ----------------------
 
