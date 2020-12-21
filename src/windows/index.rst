@@ -63,6 +63,16 @@ For custom models, add **--MODELSTORE-DETECTION** to your command as seen in the
     deepstack --MODELSTORE-DETECTION "C:/path-to-detection-models" --PORT 80
 
 
+RUN with All APIs
+-----------------
+
+You can run DeepStack with all the APIs enabled. Use the command below
+
+.. code-block:: bash
+
+    deepstack --VISION-SCENE=True --VISION-DETECTION=True --VISION-FACE=True --PORT 80
+
+
 
 Speed Modes
 -----------

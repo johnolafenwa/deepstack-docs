@@ -14,38 +14,32 @@ Setting Up DeepStack
 Install and Setup DeepStack Using the `Install Guide <../index.html#installation-guide-for-cpu-version>`_ . If you have a system with Nvidia GPU, follow instruction on Using DeepStack with NVIDIA GPU to install the GPU Version of DeepStack
 
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-For **CPU Version**
+Run the command below as it applies to the version you have installed
 
-.. code-block:: bash
+.. tabs::
 
-  sudo docker run -e VISION-FACE=True -v localstorage:/datastore \ 
-  -p 80:5000 deepquestai/deepstack
+  .. code-tab:: bash Docker CPU
 
+    docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
-For **GPU Version**
+    sudo docker run --gpus all -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-.. code-block:: bash
+  .. code-tab:: bash Windows OS
 
-  sudo docker run --gpus all -e VISION-FACE=True -v localstorage:/datastore \
-  -p 80:5000 deepquestai/deepstack:gpu
+    deepstack --VISION-FACE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-For **Jetson Version**
+    sudo docker run --runtime nvidia -e VISION-FACE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
-.. code-block:: bash
-
-  sudo docker run --runtime nvidia -e VISION-FACE=True -v localstorage:/datastore \
-  -p 80:5000 deepquestai/deepstack:gpu
-
-
-Starting DeepStack on other Platforms
--------------------------------------
-
-`DeepStack on Windows (CPU and GPU) <windows>`_
-
-`DeepStack on Raspberry PI <raspberry-pi>`_
+    sudo deepstack start "VISION-FACE=True"
 
 
 *Basic Parameters*

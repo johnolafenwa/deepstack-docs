@@ -11,34 +11,32 @@ The scene recognition api classifies an image into one of 365 scenes.
 To use this API, you need to enable the scene API when starting DeepStack.
 
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack with only the Scene APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 \
-    deepquestai/deepstack
+    docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-SCENE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
-
-Starting DeepStack on other Platforms
--------------------------------------
-
-`DeepStack on Windows (CPU and GPU) <windows>`_
-
-`DeepStack on Raspberry PI <raspberry-pi>`_
-
+    sudo deepstack start "VISION-SCENE=True"
 
 
 **Example**

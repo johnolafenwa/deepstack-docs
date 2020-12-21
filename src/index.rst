@@ -136,18 +136,38 @@ Step 2: Install DeepStack
   docker pull deepquestai/deepstack
 
 
-Step 3: Run DeepStack with Scene Recognition API enabled
 
-.. code-block:: bash
+Run DeepStack with Scene Recognition API enabled
+------------------------------------------------
 
-  docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+Run the command below as it applies to the version you have installed
+
+.. tabs::
+
+  .. code-tab:: bash Docker CPU
+
+    docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
+
+    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --VISION-SCENE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
+
+    sudo deepstack start "VISION-SCENE=True"
 
 
 *Basic Parameters*
 
 **-e VISION-SCENE=True** This enables the scene recognition API, all apis are disabled by default.
-
-**-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 
 **-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 

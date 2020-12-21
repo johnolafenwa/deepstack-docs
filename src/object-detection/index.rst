@@ -11,40 +11,33 @@ The object detection API locates and classifies 80 different kinds of objects in
 To use this API, you need to enable the detection API when starting DeepStack
 
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack with only the Detection APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 \
-    deepquestai/deepstack
+    docker run -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-DETECTION True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --gpus all -e VISION-DETECTION=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
-**Jetson Version**
+    sudo deepstack start "VISION-DETECTION=True"
 
-.. code-block:: bash
-
-    sudo docker run --runtime nvidia -e VISION-DETECTION=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-
-Starting DeepStack on other Platforms
--------------------------------------
-
-`DeepStack on Windows (CPU and GPU) <windows>`_
-
-`DeepStack on Raspberry PI <raspberry-pi>`_
 
 
 *Basic Parameters*
@@ -391,23 +384,24 @@ The default mode is **Medium**.
 
 You can specify a different mode during startup as seen below as seen below
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e MODE=High VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-DETECTION=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-DETECTION=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-DETECTION True --MODE High --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-   sudo docker run --gpus all -e MODE=High -e VISION-DETECTION=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -e MODE=High -p 80:5000 deepquestai/deepstack:jetpack
 
-
-Note the **-e MODE=High** above
 
 
 **Speed Modes are not available on the Raspberry PI Version**

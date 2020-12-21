@@ -12,37 +12,29 @@ In the `Getting Started <../getting-started/index.html>`_ , we had an overview o
 Starting DeepStack on Docker
 ----------------------------
 
-Below we start DeepStack with only the face APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-FACE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-   sudo docker run --gpus all --e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-FACE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
-**Jetson Version**
-
-.. code-block:: bash
-
-   sudo docker run --runtime nvidia --e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
-
-
-Starting DeepStack on other Platforms
--------------------------------------
-
-`DeepStack on Windows (CPU and GPU) <windows>`_
-
-`DeepStack on Raspberry PI <raspberry-pi>`_
+    sudo deepstack start "VISION-FACE=True"
 
 
 *Basic Parameters*
@@ -796,23 +788,23 @@ The default mode is **Medium**.
 
 You can specify a different mode during startup as seen below as seen below
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e MODE=High VISION-FACE=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-FACE True --MODE High --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-   sudo docker run --gpus all -e MODE=High -e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
-
-
-Note the **-e MODE=High** above
+    sudo docker run --runtime nvidia -e VISION-FACE=True -e MODE=High -p 80:5000 deepquestai/deepstack:jetpack
 
 
 **Speed Modes are not available on the Raspberry PI Version**

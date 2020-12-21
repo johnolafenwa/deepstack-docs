@@ -57,7 +57,17 @@ To run with the face apis, simply use -e **VISION-FACE=True** instead, for scene
 Once installed, run the example detection code to verify your installation is working.
 
 
+RUN with All APIs
+-----------------
 
+You can run DeepStack with all the APIs enabled. Use the command below
+
+.. code-block:: bash
+
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:jetpack
+    
+
+    
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

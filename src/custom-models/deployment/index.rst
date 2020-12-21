@@ -13,40 +13,30 @@ Put your best.pth file in the folder and rename it to whatever you want it to be
 Run DeepStack
 =============
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 \
-    deepquestai/deepstack
+    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --MODELSTORE-DETECTION "C:/path-to-detection-models" --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-**Nvidia Jetson Version**
-
-.. code-block:: bash
-
-    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection \
-    -p 80:5000 deepquestai/deepstack:jetpack
+    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:jetpack
 
 
-Starting DeepStack on other Platforms
--------------------------------------
-
-`DeepStack on Windows (CPU and GPU) <windows>`_
-
-`DeepStack on Raspberry PI <raspberry-pi>`_
 
 *Basic Parameters*
 

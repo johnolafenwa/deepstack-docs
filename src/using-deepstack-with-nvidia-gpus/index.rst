@@ -82,6 +82,14 @@ Once the above steps are complete, when you run deepstack, add the args **–gpu
 
 Once installed, run the example scene recognition code to verify your installation is working.
 
+RUN with All APIs
+------------------
+
+You can run DeepStack with all the APIs enabled. Use the command below
+
+.. code-block:: bash
+
+    sudo docker run --gpus all -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
 
 .. toctree::
