@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -183,29 +183,25 @@ The default mode is **Medium**.
 
 You can specify a different mode during startup as seen below as seen below
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e MODE=High VISION-FACE=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
+
+    sudo docker run --gpus all -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --VISION-FACE True --MODE High --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run --runtime nvidia -e VISION-FACE=True -e MODE=High -p 80:5000 deepquestai/deepstack:jetpack
 
 
-**GPU Version**
-
-.. code-block:: bash
-
-   sudo docker run --gpus all -e MODE=High -e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
-
-
-Note the **-e MODE=High** above
-
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/windows-mode.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

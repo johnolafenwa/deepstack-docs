@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -11,41 +11,32 @@ The scene recognition api classifies an image into one of 365 scenes.
 To use this API, you need to enable the scene API when starting DeepStack.
 
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack with only the Scene APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 \
-    deepquestai/deepstack
+    docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-SCENE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
     sudo deepstack start "VISION-SCENE=True"
-
-
-Starting DeepStack on Windows
------------------------------
-
-Start the **DeepStack App**, Click *Start Server*, Select the **SCENE API** and click *Start Now* .
-
-.. figure:: ../static/scene-windows.jpg
 
 
 **Example**

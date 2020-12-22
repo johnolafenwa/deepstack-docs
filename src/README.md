@@ -1,4 +1,4 @@
-# DeepStack Python: Documentation Code
+# DeepStack : Documentation Code
 
 To build the documentation, run the command below
 

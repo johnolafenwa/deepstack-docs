@@ -1,10 +1,11 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Training Your Dataset
-=======================
+Training Your Custom Model
+==========================
+
 The [DeepStack Trainer](https://github.com/johnolafenwa/deepstack-trainer) provides all of the functions needed to train on your local machine
 or in the cloud.
 Once your dataset is prepared, you can use any of the options below to train your model 
@@ -39,10 +40,10 @@ Now, you are done installing the pre-requisites, clone the DeepStack trainer
 
    git clone https://github.com/johnolafenwa/deepstack-trainer
 
-Once cloned, CD to the DeepStack trainer repo 
+Once cloned, navigate to the DeepStack `deepstack-trainer` folder
 
-Step 4: Run your Training
---------------------------
+Step 4: Train your Model
+------------------------
 
 .. code-block:: bash
 

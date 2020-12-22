@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -112,6 +112,8 @@ Installation
 
 `Installation Guide for NVIDIA Jetson <nvidia-jetson>`_
 
+`Installation Guide for Windows ( CPU and GPU ) <windows>`_
+
 `Installation Guide for Raspberry Pi <raspberry-pi>`_
 
 Installation Guide for CPU Version
@@ -134,18 +136,38 @@ Step 2: Install DeepStack
   docker pull deepquestai/deepstack
 
 
-Step 3: Run DeepStack with Scene Recognition API enabled
 
-.. code-block:: bash
+Run DeepStack with Scene Recognition API enabled
+------------------------------------------------
 
-  docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+Run the command below as it applies to the version you have installed
+
+.. tabs::
+
+  .. code-tab:: bash Docker CPU
+
+    docker run -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
+
+    sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --VISION-SCENE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
+
+    sudo deepstack start "VISION-SCENE=True"
 
 
 *Basic Parameters*
 
-**-e VISION-SCENE=True** This enables the scene recognition API, all apis are disabled by default.
-
-**-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
+**-e VISION-SCENE=True** This enables the scene recognition API.
 
 **-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
@@ -167,6 +189,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    security/index
    backup/index
    using-deepstack-with-nvidia-gpus/index
+   windows/index
    nvidia-jetson/index
    raspberry-pi/index
    best-practices/index

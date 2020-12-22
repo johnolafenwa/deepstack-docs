@@ -1,11 +1,11 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 Deploying Your Model With DeepStack
 ====================================
-Deploying Your Model to DeepStack is the simplest part, once you have downloaded the best.pth file from your training.
+Deploying your model to DeepStack is the simplest part, once you have downloaded the best.pth file from your training.
 
 Create a directory on your system to store your models, here we shall assume your folder is named ```my-models```
 Put your best.pth file in the folder and rename it to whatever you want it to be, here we assume you named it catsanddogs.pt
@@ -13,38 +13,36 @@ Put your best.pth file in the folder and rename it to whatever you want it to be
 Run DeepStack
 =============
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 \
-    deepquestai/deepstack
+    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
+
+    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --MODELSTORE-DETECTION "C:/path-to-detection-models" --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:jetpack
 
 
-**GPU Version**
-
-.. code-block:: bash
-
-    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-**Nvidia Jetson Version**
-
-.. code-block:: bash
-
-    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection \
-    -p 80:5000 deepquestai/deepstack:jetpack
 
 *Basic Parameters*
 
 **-v /path-to/my-models:/modelstore/detection** This specifies the local directory where you stored your custom models
 
-**-p 80:5000** This makes deepstack accessible via port 80 of the machine.
+**-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
 Run Inference
 =============

@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -6,12 +6,12 @@
 Backup
 ======
 
-You can backup your deepstack data including registered faces and custom models. At any time, you can restore your data back.
+You can backup your DeepStack data including registered faces and custom models. At any time, you can restore your data back.
 
 Backups
 -------
 
-The code below downloads your entire deepstack data as a single zip file
+The code below downloads your entire DeepStack data as a single zip file
 
 .. code-block:: python
 
@@ -29,7 +29,7 @@ The code below downloads your entire deepstack data as a single zip file
 Restore
 -------
 
-The code below restores your deepstack data from a saved backup.
+The code below restores your DeepStack data from a saved backup.
 
 .. code-block:: python
 

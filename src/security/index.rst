@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -16,27 +16,30 @@ The API Key protects all recognition and detection endpoints including face, sce
 Setting API Key
 ---------------
 
-You can specify the api key during startup of deepstack.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
     sudo docker run -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
-
-
-**GPU Version**
-
-.. code-block:: bash
+  
+  .. code-tab:: bash Docker GPU
 
     sudo docker run --gpus all -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
+  .. code-tab:: bash Windows OS
 
-**On Raspberry PI, specify the key as below**
+    deepstack --VISION-SCENE True --PORT 80 --API-KEY Mysecretkey
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-.. code-block:: bash
+    sudo docker run -e API-KEY=Mysecretkey --runtime nvidia  -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
     sudo deepstack start "VISION-SCENE=True API-KEY=Mysecretkey"
+
 
 The command **-e API-KEY=Mysecretkey** sets **Mysecretkey** as the api key.
 
@@ -195,31 +198,33 @@ Admin keys are set similarly to API Keys, see example below.
 You can specify the admin key during startup of deepstack.
 
 
-**CPU Version**
+Run the command below as it applies to the version you have installed
 
-.. code-block:: bash
+.. tabs::
+
+  .. code-tab:: bash Docker CPU
 
     sudo docker run -e ADMIN-KEY=Secretadminkey -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
-
-**GPU Version**
-
-.. code-block:: bash
+  
+  .. code-tab:: bash Docker GPU
 
     sudo docker run --gpus all -e ADMIN-KEY=Secretadminkey -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --VISION-SCENE True --PORT 80 --API-KEY Mysecretkey --ADMIN-KEY Secretadminkey
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run -e ADMIN-KEY=Secretadminkey -e API-KEY=Mysecretkey --runtime nvidia  -e VISION-SCENE=True -p 80:5000 deepquestai/deepstack:jetpack
+
+  .. code-tab:: bash Raspberry Pi
+
+    sudo deepstack start "VISION-SCENE=True ADMIN-KEY=Secretadminkey API-KEY=Mysecretkey"
 
 
 
 The command **-e ADMIN-KEY=Secretadminkey sets** **Secretadminkey** as the admin key. In this example, the API key is also set, note that you can set either without setting the other.
-
-
-**On Raspberry PI, specify the key as below.**
-
-.. code-block:: bash
-
-    sudo deepstack start "VISION-SCENE=True ADMIN-KEY=Secretadminkey"
-
-
-**On Windows, simply type in the API Key in the Start Up Interface.**
 
 
 Once you set an Admin key, you need to specify it when making admin calls such as backup, restore and model management.

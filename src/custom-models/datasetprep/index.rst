@@ -1,11 +1,11 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
 Preparing Your Dataset
 =======================
-To train your object detection model, you need to prepare your dataset in the YOLO format. To do this, we shall use LabelIMG,
+To train your object detection model, you need to prepare your dataset in the YOLO format ( `Click here to learn more on the YOLO format <https://github.com/AlexeyAB/Yolo_mark/issues/60>`_ ). To do this, we shall use LabelIMG,
 an open source tool that makes the process simpler.
 
 Step 1: Install LabelIMG
@@ -51,7 +51,7 @@ Collect as many images as you can containing the object you want to detect. Abou
 You can source images from the web or from your camera feeds as applicable.
 
 * Create a new folder for your dataset
-* create train and validation folders inside it
+* Create train and validation folders inside it
 * Put all your training images inside the train folder
 * Put all your test images inside your validation folder
 
@@ -111,7 +111,7 @@ TO
 
 Step 4: Annotate Your Dataset
 =============================
-Now that you have loaded your images, set the save folder for the annotations and switched to the yolo format, we shall annotate our dataset. In this example, we are using an image dataset on Google Glass.
+Now that you have loaded your images, set the save folder for the annotations and switched to the YOLO format, we shall annotate our dataset. In this example, we are using an image dataset on Google Glass.
 
 .. figure:: ../../static/googleglasss.png
 
@@ -135,7 +135,7 @@ the XML annotations file will be saved as image_1.xml, image_2.xml,…. image_z.
 
 
 Annotate Your Test Dataset
-=========================
+==========================
 Repeat the process above for your test folder as well.
 
 

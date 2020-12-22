@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -62,7 +62,7 @@ If you are running an old system without modern cpu instructions such as AVX, pl
 Step 5: RUN DeepStack with GPU Access
 -------------------------------------
 
-Once the above steps are complete, when you run deepstack, add the args **–gpus all**
+Once the above steps are complete, when you run DeepStack, add the args **–gpus all**
 
 .. code-block:: bash
 
@@ -74,7 +74,7 @@ Once the above steps are complete, when you run deepstack, add the args **–gpu
 
 **--gpus all** This enables gpu access to the DeepStack container
 
-**-e VISION-SCENE=True** This enables the scene recognition API, all apis are disabled by default.
+**-e VISION-SCENE=True** This enables the scene recognition API.
 
 **-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 
@@ -82,6 +82,14 @@ Once the above steps are complete, when you run deepstack, add the args **–gpu
 
 Once installed, run the example scene recognition code to verify your installation is working.
 
+RUN with All APIs
+------------------
+
+You can run DeepStack with all the APIs enabled. Use the command below
+
+.. code-block:: bash
+
+    sudo docker run --gpus all -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
 
 .. toctree::

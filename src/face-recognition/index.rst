@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -12,52 +12,38 @@ In the `Getting Started <../getting-started/index.html>`_ , we had an overview o
 Starting DeepStack on Docker
 ----------------------------
 
-Below we start DeepStack with only the face APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-FACE True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-   sudo docker run --gpus all --e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-FACE=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
-**Jetson Version**
-
-.. code-block:: bash
-
-   sudo docker run --runtime nvidia --e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
+    sudo deepstack start "VISION-FACE=True"
 
 
 *Basic Parameters*
 
-**-e VISION-FACE=True** This enables the face recognition APIs, all apis are disabled by default.
+**-e VISION-FACE=True** This enables the face recognition APIs.
 
-**-v localstorage:/datastore** This specifies the local volume where deepstack will store all data.
+**-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
 
-**-p 80:5000** This makes deepstack accessible via port 80 of the machine.
-
-
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
-
-   sudo deepstack start "VISION-FACE=True"
-
-
-Starting DeepStack on Windows
------------------------------
-
-Start the **DeepStack App**, Click Start **Server**, Select the **Face API** and click **Start Now**.
+**-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
 
 Face Registration
@@ -802,29 +788,24 @@ The default mode is **Medium**.
 
 You can specify a different mode during startup as seen below as seen below
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e MODE=High VISION-FACE=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-FACE=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-FACE True --MODE High --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-   sudo docker run --gpus all -e MODE=High -e VISION-FACE=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --runtime nvidia -e VISION-FACE=True -e MODE=High -p 80:5000 deepquestai/deepstack:jetpack
 
-
-Note the **-e MODE=High** above
-
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/windows-mode.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

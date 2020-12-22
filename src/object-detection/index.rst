@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -11,57 +11,43 @@ The object detection API locates and classifies 80 different kinds of objects in
 To use this API, you need to enable the detection API when starting DeepStack
 
 
-Starting DeepStack on Docker
-----------------------------
+Starting DeepStack
+------------------
 
-Below we start DeepStack with only the Detection APIs enabled.
+Run the command below as it applies to the version you have installed
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-    sudo docker run -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 \
-    deepquestai/deepstack
+    docker run -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
 
+    sudo docker run --gpus all -e VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
 
-**GPU Version**
+  .. code-tab:: bash Windows OS
 
-.. code-block:: bash
+    deepstack --VISION-DETECTION True --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --gpus all -e VISION-DETECTION=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-**Jetson Version**
-
-.. code-block:: bash
-
-    sudo docker run --runtime nvidia -e VISION-DETECTION=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
-
-
-*Basic Parameters*
-
-**-e VISION-DETECTION=True** This enables the object detection API, all apis are disabled by default.
-
-**-v localstorage:/datastore** This specifies the local volume where deepstack will store all data.
-
-**-p 80:5000** This makes deepstack accessible via port 80 of the machine.
-
-
-Starting DeepStack on Raspberry PI
-----------------------------------
-
-.. code-block:: bash
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:jetpack
+  
+  .. code-tab:: bash Raspberry Pi
 
     sudo deepstack start "VISION-DETECTION=True"
 
 
-Starting DeepStack on Windows
------------------------------
 
-Start the **DeepStack App**, Click *Start Server*, Select the **DETECTION API** and click *Start Now* .
+*Basic Parameters*
 
-.. figure:: ../static/object-detection.png
+**-e VISION-DETECTION=True** This enables the object detection API.
+
+**-v localstorage:/datastore** This specifies the local volume where DeepStack will store all data.
+
+**-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
+
 
 
 **Example**
@@ -398,29 +384,25 @@ The default mode is **Medium**.
 
 You can specify a different mode during startup as seen below as seen below
 
-**CPU Version**
+.. tabs::
 
-.. code-block:: bash
+  .. code-tab:: bash Docker CPU
 
-   sudo docker run -e MODE=High VISION-DETECTION=True -v localstorage:/datastore -p 80:5000 \
-   deepquestai/deepstack
+    docker run -e VISION-DETECTION=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+  
+  .. code-tab:: bash Docker GPU
+
+    sudo docker run --gpus all -e VISION-DETECTION=True -e MODE=High -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+
+  .. code-tab:: bash Windows OS
+
+    deepstack --VISION-DETECTION True --MODE High --PORT 80
+  
+  .. code-tab:: bash NVIDIA Jetson
+
+    sudo docker run --runtime nvidia -e VISION-DETECTION=True -e MODE=High -p 80:5000 deepquestai/deepstack:jetpack
 
 
-**GPU Version**
-
-.. code-block:: bash
-
-   sudo docker run --gpus all -e MODE=High -e VISION-DETECTION=True -v localstorage:/datastore \
-   -p 80:5000 deepquestai/deepstack:gpu
-
-
-Note the **-e MODE=High** above
-
-On Windows, you can easily select the High mode in the UI.
-
-.. figure:: ../static/detection-high.jpg
-
-Note the **High** radio button selected above.
 
 **Speed Modes are not available on the Raspberry PI Version**
 

@@ -8,7 +8,6 @@ RUN pip3 install Sphinx
 RUN pip3 install sphinxawesome-theme
 RUN pip3 install sphinx-tabs
 RUN apt-get install -y make
-RUN pip3 install boto3
 
 # Copy Project
 COPY . /

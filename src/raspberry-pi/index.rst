@@ -1,4 +1,4 @@
-.. deepstack-python documentation master file, created by
+.. DeepStack documentation master file, created by
    sphinx-quickstart on Sun Nov  8 22:05:48 2020.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -16,7 +16,7 @@ Note that due to the limited compute capacity of the Raspberry PI, DeepStack req
 
 .. figure:: ../static/movidius.jpeg
 
-The PI Version is in alpha and would be regularly improved for optimal performance.
+The Raspberry PI Version is in alpha and will be regularly improved for optimal performance.
 
 Minimum System Requirements
 
@@ -37,9 +37,9 @@ DeepStack on the raspberry pi depends on **python3.5** or **Python3.7** installe
 Using DeepStack
 ---------------
 
-Due to a number of factors, running DeepStack on the PI is slightly different.
+Due to a number of factors, running DeepStack on the Raspberry PI is slightly different.
 
-Below are the various ways to run deepstack. Ensure the NCS is plugged in before running deepstack.
+Below are the various ways to run DeepStack. Ensure the NCS is plugged in before running DeepStack.
 
 **Running with Scene Recognition**
 
@@ -81,11 +81,11 @@ DeepStack by default runs on port **80** you can run it on your choice port usin
 Limitations
 -----------
 
-- Only one api type can be run at once, for example, you would encounter errors if you attempt to run both **Object Detection** and **Face** at the same time.
+- Only one API type can be run at once, for example, you would encounter errors if you attempt to run both **Object Detection** and **Face** at the same time.
 
 - Custom Models are not supported at present, support for this would be added in the BETA release.
 
-- Only One instance of DeepStack can be run at present, running a new instance would close the other , this is enforced due to limitations of the Neural Compute Stick.
+- Only one instance of DeepStack can be run at present, running a new instance would close the other , this is enforced due to limitations of the Neural Compute Stick.
 
 - Use of Multiple NCSs is not yet supported. Only one can be used in this release.
 
@@ -93,7 +93,7 @@ Limitations
 Known Issues
 ------------
 
-**DeepStack Not Responding :** This might occur if you start DeepStack without the NCS plugged in or you sometimes when you stop and rerun DeepStack. In any case, simply restart your Raspberry PI, plug in the NCS and start deepstack. 
+**DeepStack Not Responding :** This might occur if you start DeepStack without the NCS plugged in or you sometimes when you stop and rerun DeepStack. In any case, simply restart your Raspberry PI, plug in the NCS and start DeepStack. 
 
 **Invalid Image :** This can occur if you send a very high resolution image, about 2000px * 2000px, to the **object detection** or **face** APIs. 
 
