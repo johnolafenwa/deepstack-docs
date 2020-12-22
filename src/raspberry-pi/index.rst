@@ -16,7 +16,7 @@ Note that due to the limited compute capacity of the Raspberry PI, DeepStack req
 
 .. figure:: ../static/movidius.jpeg
 
-The PI Version is in alpha and would be regularly improved for optimal performance.
+The Raspberry PI Version is in alpha and will be regularly improved for optimal performance.
 
 Minimum System Requirements
 
@@ -37,7 +37,7 @@ DeepStack on the raspberry pi depends on **python3.5** or **Python3.7** installe
 Using DeepStack
 ---------------
 
-Due to a number of factors, running DeepStack on the PI is slightly different.
+Due to a number of factors, running DeepStack on the Raspberry PI is slightly different.
 
 Below are the various ways to run DeepStack. Ensure the NCS is plugged in before running DeepStack.
 
@@ -81,11 +81,11 @@ DeepStack by default runs on port **80** you can run it on your choice port usin
 Limitations
 -----------
 
-- Only one api type can be run at once, for example, you would encounter errors if you attempt to run both **Object Detection** and **Face** at the same time.
+- Only one API type can be run at once, for example, you would encounter errors if you attempt to run both **Object Detection** and **Face** at the same time.
 
 - Custom Models are not supported at present, support for this would be added in the BETA release.
 
-- Only One instance of DeepStack can be run at present, running a new instance would close the other , this is enforced due to limitations of the Neural Compute Stick.
+- Only one instance of DeepStack can be run at present, running a new instance would close the other , this is enforced due to limitations of the Neural Compute Stick.
 
 - Use of Multiple NCSs is not yet supported. Only one can be used in this release.
 
