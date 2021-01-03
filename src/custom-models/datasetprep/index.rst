@@ -127,11 +127,11 @@ Click on the "Create \nRectBox" button on the left-bottom and draw a box around 
 .. figure:: ../../static/annotate3.jpeg
 .. figure:: ../../static/annotate4.jpeg
 
-As you are annotating your images, the XML file containing your box annotations are saved for each image in the "train" folder. 
+As you are annotating your images, the **.TXT** files containing your box annotations are saved for each image in the "train" folder. 
 
-N.B: Take note that the annotation XML file for each image is saved using the name of the image file. For example:
-you have images image_1.jpg, image_2.jpg …… image_z.jpg
-the XML annotations file will be saved as image_1.xml, image_2.xml,…. image_z.xml
+N.B: Take note that the annotation **.TXT** file for each image is saved using the name of the image file. For example:
+you have images *image_1.jpg*, *image_2.jpg* …… *image_z.jpg*
+the **.TXT** annotations file will be saved as *image_1.txt*, *image_2.txt*,…. *image_z.txt*
 
 
 Annotate Your Test Dataset
