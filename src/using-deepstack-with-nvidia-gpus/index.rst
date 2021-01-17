@@ -8,8 +8,6 @@ Using DeepStack with NVIDIA GPUs
 
 DeepStack GPU Version serves requests 5 - 20 times faster than the CPU version if you have an NVIDIA GPU.
 
- **NOTE: THE GPU VERSION IS ONLY SUPPORTED ON LINUX, WINDOWS SUPPORT IS COMING SOON.**
-
 Before you install the GPU Version, you need to follow the steps below.
 
 

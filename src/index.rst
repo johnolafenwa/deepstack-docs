@@ -11,6 +11,8 @@ Official Documentation and Guide for DeepStack AI Server.
 
 **DeepStack** is an AI server that empowers every developer in the world to easily build state-of-the-art AI systems both on premise and in the cloud. The promises of Artificial Intelligence are huge but becoming a machine learning engineer is hard. **DeepStack** is device and language agnostic. You can run it on **Windows**, **Mac OS**, **Linux**, **Raspberry PI** and use it with any programming language.
 
+DeepStack's source code is available on GitHub via `https://github.com/johnolafenwa/DeepStack <https://github.com/johnolafenwa/DeepStack>`_
+
 **DeepStack** is developed and maintained by `DeepQuest AI <https://deepquestai.com>`_ .
 
 
@@ -186,12 +188,14 @@ Run the **example scene recognition** code at the begining of this page to verif
    object-detection/index
    scene-recognition/index
    custom-models/index
+   custom-models-samples/index
    security/index
    backup/index
    using-deepstack-with-nvidia-gpus/index
    windows/index
    nvidia-jetson/index
    raspberry-pi/index
+   faq/index
    best-practices/index
    api-reference/index
    release-notes/index
