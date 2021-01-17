@@ -188,6 +188,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    object-detection/index
    scene-recognition/index
    custom-models/index
+   custom-models-samples/index
    security/index
    backup/index
    using-deepstack-with-nvidia-gpus/index
