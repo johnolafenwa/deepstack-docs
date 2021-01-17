@@ -319,11 +319,11 @@ APIs: Security
 ==============
 
 Does DeepStack support setting API keys?
-========================================
+----------------------------------------
 Yes. DeepStack allows you to set API keys to protect all the endpoints of your running DeepStack server. Visit the `security page <https://docs.deepstack.cc/security>`_ in this documentation to learn more. You can use this prevent unauthorized usage of your DeepStack instance.
 
 Does DeepStack support Admin Keys?
-==================================
+----------------------------------
 
 Yes. You can set Admin key for performing operations such as:
 
