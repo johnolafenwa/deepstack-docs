@@ -33,6 +33,20 @@ This model is trained to detect Norwegian licence plates, but is tested with var
 GitHub Repository: `https://github.com/odd86/deepstack_licenceplate_model <https://github.com/odd86/deepstack_licenceplate_model>`_
 
 
+2. Logo Detection
+-----------------
+
+.. figure:: https://github.com/OlafenwaMoses/DeepStack_OpenLogo/raw/main/images/fedex_detected.jpg
+
+This model is trained to detect all 352 logos in the `OpenLogo dataset <https://qmul-openlogo.github.io/>`_.
+
+   - Created by: `DeepQuestAI <http://deepstack.cc/>`_
+   - Purpose: Common Logo Detection
+   - Model Type: YOLOv5x
+
+GitHub Repository: `DeepStack_OpenLogo <https://github.com/OlafenwaMoses/DeepStack_OpenLogo>`_
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
