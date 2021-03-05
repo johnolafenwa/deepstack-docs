@@ -16,7 +16,7 @@ Install DeepStack CPU
 
 Click the link below to download DeepStack CPU version for Windows.
 
-`>> Download CPU version for Windows <https://github.com/johnolafenwa/DeepStack/releases/download/0.2-beta/DeepStack-Installer-CPU.2021.01.beta.exe>`_
+`>> Download CPU version for Windows <https://deepquest.sfo2.digitaloceanspaces.com/deepstack/DeepStack-Installer-CPU-2021.02.1.exe>`_
 
 Once downloded, run the downloaded **.exe** file and install on your Windows machine.
 
@@ -35,7 +35,7 @@ To install and use DeepStack GPU version on your Windows machine, follow the ste
 Once the above are installed, download and run DeepStack GPU version for windows via the link below.
 
 
-`>> Download GPU version for Windows <https://github.com/johnolafenwa/DeepStack/releases/download/0.2-beta/DeepStack-Installer-GPU.2021.01.beta.exe>`_
+`>> Download GPU version for Windows <https://deepquest.sfo2.digitaloceanspaces.com/deepstack/DeepStack-Installer-GPU-2021.02.1.exe>`_
 
 
 Using DeepStack on Windows

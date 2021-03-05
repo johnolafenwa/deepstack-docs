@@ -191,6 +191,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    custom-models-samples/index
    security/index
    backup/index
+   python-sdk/index
    using-deepstack-with-nvidia-gpus/index
    windows/index
    nvidia-jetson/index
