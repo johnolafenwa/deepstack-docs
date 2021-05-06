@@ -47,6 +47,20 @@ This model is trained to detect all 352 logos in the `OpenLogo dataset <https://
 GitHub Repository: `DeepStack_OpenLogo <https://github.com/OlafenwaMoses/DeepStack_OpenLogo>`_
 
 
+3. Dark/Night scene objects Detection
+-------------------------------------
+
+.. figure:: https://github.com/OlafenwaMoses/DeepStack_ExDark/raw/main/images/1.jpg
+
+This model is trained to detect 12 common objects in images and videos from Dark/Night scenes. This model was trained on the `ExDark Dataset <https://github.com/cs-chan/Exclusively-Dark-Image-Dataset>`_.
+
+   - Created by: `DeepQuestAI <http://deepstack.cc/>`_
+   - Purpose: Detecting common objects in dark/night images and videos
+   - Model Type: YOLOv5x
+
+GitHub Repository: `DeepStack_ExDark <https://github.com/OlafenwaMoses/DeepStack_ExDark>`_
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
