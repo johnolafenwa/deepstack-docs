@@ -22,25 +22,25 @@ Run the command below as it applies to the version you have installed
 
   .. code-tab:: bash Docker CPU
 
-    sudo docker run -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack
+    sudo docker run -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack
   
   .. code-tab:: bash Docker GPU
 
-    sudo docker run --gpus all -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --gpus all -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack:gpu
 
   .. code-tab:: bash Windows OS
 
-    deepstack --MODELSTORE-DETECTION "C:/path-to-detection-models" --PORT 80
+    deepstack --MODELSTORE-DETECTION "C:/path-to-custom-models-folder" --PORT 80
   
   .. code-tab:: bash NVIDIA Jetson
 
-    sudo docker run --runtime nvidia -v /path-to/my-models:/modelstore/detection -p 80:5000 deepquestai/deepstack:jetpack
+    sudo docker run --runtime nvidia -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack:jetpack
 
 
 
 *Basic Parameters*
 
-**-v /path-to/my-models:/modelstore/detection** This specifies the local directory where you stored your custom models
+**-v /path-to/custom-models-folder:/modelstore/detection** This specifies the local directory where you stored your custom models
 
 **-p 80:5000** This makes DeepStack accessible via port 80 of the machine.
 
