@@ -52,7 +52,7 @@ Step 4: Install DeepStack GPU Version
 
 .. code-block:: bash
 
-    sudo docker pull deepquestai/deepstack:gpu
+    sudo docker pull deepquestai/deepstack:gpu-2021.06.1
 
 If you are running an old system without modern cpu instructions such as AVX, please use the **Legacy System Version**
 
@@ -65,7 +65,7 @@ Once the above steps are complete, when you run DeepStack, add the args **–gpu
 .. code-block:: bash
 
     sudo docker run --gpus all -e VISION-SCENE=True -v localstorage:/datastore \
-    -p 80:5000 deepquestai/deepstack:gpu
+    -p 80:5000 deepquestai/deepstack:gpu-2021.06.1
 
 
 *Basic Parameters*
@@ -87,7 +87,7 @@ You can run DeepStack with all the APIs enabled. Use the command below
 
 .. code-block:: bash
 
-    sudo docker run --gpus all -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu
+    sudo docker run --gpus all -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:gpu-2021.06.1
 
 
 .. toctree::
