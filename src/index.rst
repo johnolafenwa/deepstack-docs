@@ -116,7 +116,7 @@ Installation
 
 `Installation Guide for Windows ( CPU and GPU ) <windows>`_
 
-`Installation Guide for Raspberry Pi <raspberry-pi>`_
+`Installation Guide for Raspberry Pi and Other Arm64 Devices <arm64>`_
 
 Installation Guide for CPU Version
 ----------------------------------
@@ -195,7 +195,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    using-deepstack-with-nvidia-gpus/index
    windows/index
    nvidia-jetson/index
-   raspberry-pi/index
+   arm64/index
    faq/index
    best-practices/index
    api-reference/index
