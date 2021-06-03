@@ -9,9 +9,9 @@ Using DeepStack with Arm64 Devices
 DeepStack is available on all Arm64 devices including Raspberry PI, Qualcomm DragonBoard 410c, AWS Graviton Servers and any device with a Arm64 
 processor and a Linux 64 Bit OS.
 
-*Note for Raspberry PI Users:* While Raspberry uses a 64 bit processor, Raspbian OS is 32 bit, to run DeepStack on Raspberry PI, you can
-either enable the experimental 64 Bit Mode on Raspbian OS, following this guide `Enabling 64 Bit Mode on Raspbian OS <https://medium.com/@kavoshex/raspian-added-support-for-64-bit-kernel-6cf27c2b26db>`_ 
-or you could install a 64 Bit OS such as Balena OS and Ubuntu Server.
+*Note for Raspberry PI Users:* While Raspberry uses a 64 bit processor, Raspbian OS is 32 bit, to run DeepStack on Raspberry PI, you should install the 
+64 Bit Raspbian Image, find it here `Raspbian OS 64 Bit Images <https://downloads.raspberrypi.org/raspios_arm64/images/>`_ 
+you can also install a 64 Bit OS such as Balena OS and Ubuntu Server.
 
 *Recommeded Hardware Spec:* While DeepStack can run successfully on a 1GB Ram device, we recommend using a device with 8GB Ram for good performance.
 
