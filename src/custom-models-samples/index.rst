@@ -72,7 +72,7 @@ This model is trained to detect/recognize **16 human actions** in images and vid
    - Purpose: Detecting 16 human actions in images and videos
    - Model Type: YOLOv5x
 
-Pre-trained Model and Dataset on GitHub: `DeepStack_ActionNET <https://github.com/OlafenwaMoses/DeepStack_ExDark>`_
+Pre-trained Model and Dataset on GitHub: `DeepStack_ActionNET <https://github.com/OlafenwaMoses/DeepStack_ActionNET>`_
 
 
 .. toctree::
