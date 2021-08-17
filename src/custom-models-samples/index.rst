@@ -30,7 +30,7 @@ This model is trained to detect Norwegian licence plates, but is tested with var
    - Purpose: License Plate Detection
    - Model Type: YOLOv5
 
-GitHub Repository: `https://github.com/odd86/deepstack_licenceplate_model <https://github.com/odd86/deepstack_licenceplate_model>`_
+Pre-trained Model on GitHub: `https://github.com/odd86/deepstack_licenceplate_model <https://github.com/odd86/deepstack_licenceplate_model>`_
 
 
 2. Logo Detection
@@ -44,7 +44,7 @@ This model is trained to detect all 352 logos in the `OpenLogo dataset <https://
    - Purpose: Common Logo Detection
    - Model Type: YOLOv5x
 
-GitHub Repository: `DeepStack_OpenLogo <https://github.com/OlafenwaMoses/DeepStack_OpenLogo>`_
+Pre-trained Model on GitHub: `DeepStack_OpenLogo <https://github.com/OlafenwaMoses/DeepStack_OpenLogo>`_
 
 
 3. Dark/Night scene objects Detection
@@ -58,7 +58,21 @@ This model is trained to detect 12 common objects in images and videos from Dark
    - Purpose: Detecting common objects in dark/night images and videos
    - Model Type: YOLOv5x
 
-GitHub Repository: `DeepStack_ExDark <https://github.com/OlafenwaMoses/DeepStack_ExDark>`_
+Pre-trained Model on GitHub: `DeepStack_ExDark <https://github.com/OlafenwaMoses/DeepStack_ExDark>`_
+
+
+4. Human action Detection/Recognition
+-------------------------------------
+
+.. figure:: https://github.com/OlafenwaMoses/DeepStack_ActionNET/raw/main/images/test4_detected.jpg
+
+This model is trained to detect/recognize **16 human actions** in images and videos. This model was trained on the `ActionNET Dataset <https://github.com/OlafenwaMoses/Action-Net>`_.
+
+   - Created by: `DeepQuestAI <http://deepstack.cc/>`_
+   - Purpose: Detecting 16 human actions in images and videos
+   - Model Type: YOLOv5x
+
+Pre-trained Model and Dataset on GitHub: `DeepStack_ActionNET <https://github.com/OlafenwaMoses/DeepStack_ExDark>`_
 
 
 .. toctree::
