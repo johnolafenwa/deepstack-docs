@@ -10,17 +10,17 @@ This page contains most answers general questions on DeepStack and technical iss
 
 `>> General <#general^questions>`_
 
-`>> Installation & starting <#installation^starting^issues>`_
+`>> Installation & starting <#installation-starting-issues>`_
 
-`>> Face API <#apis^face>`_
+`>> Face API <#apis-face>`_
 
-`>> Object Detection API <#apis^object^detection>`_
+`>> Object Detection API <#apis-object-detection>`_
 
-`>> Scene Recognition API <#apis^scene^recognition>`_
+`>> Scene Recognition API <#apis-scene-recognition>`_
 
-`>> Custom Models API <#apis^custom^models>`_
+`>> Custom Models API <#apis-custom-models>`_
 
-`>> API Security <#apis^security>`_
+`>> API Security <#apis-security>`_
 
 General questions
 -----------------
