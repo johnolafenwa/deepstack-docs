@@ -286,7 +286,7 @@ You can specify a different mode during startup as seen below.
 
 .. code-block:: bash
 
-   sudo docker run -e MODE=High VISION-FACE=True -v localstorage:/datastore \
+   sudo docker run -e MODE=High -e VISION-FACE=True -v localstorage:/datastore \
    -p 80:5000 deepquestai/deepstack
 
 **GPU Version**
