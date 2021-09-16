@@ -25,13 +25,12 @@ The face detection API detects faces and returns their coordinates. It functions
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-    Image               file          Picture of a person
+    **Image** ( *file* ): Picture of a person
 
 
-
-  .. code-tab:: bash Response
+  .. code-tab:: json Response
 
     {
       'predictions': [{'x_max': 712, 'y_max': 261, 'x_min': 626, 'confidence': 0.99990666, 'y_min': 145},
@@ -41,36 +40,6 @@ The face detection API detects faces and returns their coordinates. It functions
       'success': True
 
     }
-
-
-|
-
-
-.. code-block::
-
-   http://localhost:80/v1/vision/detection
-
-
-The object detection API locates and classifies 80 different kinds of objects in a single image.
-
-.. tabs::
-
-  .. code-tab:: bash Request
-
-    Image               file          Picture of a person
-
-
-
-  .. code-tab:: bash Response
-
-    {
-      'predictions': [{'x_max': 819, 'x_min': 633, 'y_min': 354, 'confidence': 99, 'label': 'dog', 'y_max': 546},
-      {'x_max': 601, 'x_min': 440, 'y_min': 116, 'confidence': 99, 'label': 'person', 'y_max': 516},
-      {'x_max': 445, 'x_min': 295, 'y_min': 84, 'confidence': 99, 'label': 'person', 'y_max': 514}],
-      'success': True
-
-    }
-
 
 |
 
@@ -90,17 +59,18 @@ The face registration endpoint allows you to register pictures of person and ass
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-    Image               file          Picture of a person
+    **Image**   ( *file* ): Picture of a person
 
-    Name                string        User ID
+    **Name**  ( *string* ): User ID
 
 
-  .. code-tab:: bash Response
+  .. code-tab:: json Response
 
     {
-      'message': 'face added', 'success': True
+      'message': 'face added',
+      'success': True
     }
 
 
@@ -122,13 +92,12 @@ The face recognition endpoint detects all faces in an image and returns the user
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-    Image            file           Picture of a person
+    **Image** ( *file* ): Picture of a person
 
 
-
-  .. code-tab:: bash Response
+  .. code-tab:: json Response
 
     {
       'success': True,
@@ -150,14 +119,12 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-    Image               file            Deleted Picture of a person
-
-
+    **Image** ( *file* ): Picture of a person
 
 
-  .. code-tab:: bash Response
+  .. code-tab:: json Response
 
     {
       'success': True,
@@ -180,18 +147,81 @@ The face recognition API allows you to ensure that a specific name faces that ha
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-     Name                string        User ID
-
-
+     **Name**  ( *string* ): User ID
 
 
-  .. code-tab:: bash Response
+
+  .. code-tab:: json Response
 
     {
       'success': True
     }
+
+
+|
+
+Face Match
+-----------------
+
+
+.. code-block::
+
+   http://localhost:80/v1/vision/face/match
+
+
+The face match api compares faces in two different pictures and tells the similarity between them. A typical use of this is matching identity documents with pictures of a person.
+
+
+.. tabs::
+
+  .. tab:: Parameters [POST]
+
+    **Image** ( *file* ): Picture of a person
+
+
+
+  .. code-tab:: json Response
+
+      {
+       'similarity': 0.73975885,
+       'success': True
+      }
+
+
+|
+
+
+Object Detection
+-----------------
+
+
+.. code-block::
+
+   http://localhost:80/v1/vision/detection
+
+
+The object detection API locates and classifies 80 different kinds of objects in a single image.
+
+.. tabs::
+
+  .. tab:: Parameters [POST]
+
+    **Image** ( *file* ): Picture of a person
+
+
+
+  .. code-tab:: json Response
+
+    {
+      'predictions': [{'x_max': 819, 'x_min': 633, 'y_min': 354, 'confidence': 99, 'label': 'dog', 'y_max': 546},
+      {'x_max': 601, 'x_min': 440, 'y_min': 116, 'confidence': 99, 'label': 'person', 'y_max': 516},
+      {'x_max': 445, 'x_min': 295, 'y_min': 84, 'confidence': 99, 'label': 'person', 'y_max': 514}],
+      'success': True
+
+    }
+
 
 |
 
@@ -208,18 +238,18 @@ The scene recognition api classifies an image into one of 365 scenes.
 
 .. tabs::
 
-  .. code-tab:: bash Request
+  .. tab:: Parameters [POST]
 
-    Image            file           Picture of a place
+    **Image** ( *file* ): Picture of a place
 
 
 
-  .. code-tab:: bash Response
+  .. code-tab:: json Response
 
     {
-         'success': True,
-         'confidence': 0.7373981,
-         'label': 'Place'
+         "success": True,
+         "confidence": 0.7373981,
+         "label": "Place"
     }
 
 |
