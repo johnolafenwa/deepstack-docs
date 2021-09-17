@@ -7,7 +7,7 @@ API Reference
 =============
 
 
-This documentation contains all the API enpoints used in DeepStack.
+This documentation contains reference for all endpoints available in DeepStack.
 
 
 
@@ -25,9 +25,9 @@ The face detection API detects faces and returns their coordinates. It functions
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a person
+    **image** ( *file* ): an image object
 
 
   .. code-tab:: json Response
@@ -59,11 +59,11 @@ The face registration endpoint allows you to register pictures of person and ass
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image**   ( *file* ): Picture of a person
+    **image**   ( *file* ): an image object
 
-    **Name**  ( *string* ): User ID
+    **Name**  ( *string* ): a unique id or name
 
 
   .. code-tab:: json Response
@@ -92,9 +92,9 @@ The face recognition endpoint detects all faces in an image and returns the user
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a person
+    **image** ( *file* ): an image object
 
 
   .. code-tab:: json Response
@@ -119,9 +119,9 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a person
+    **image** ( *file* ): an image object
 
 
   .. code-tab:: json Response
@@ -142,14 +142,14 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 
 
-The face recognition API allows you to ensure that a specific name faces that have been delted with DeepStack.
+The face recognition API allows you to ensure that a specific name faces that have been deleted with DeepStack.
 
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-     **Name**  ( *string* ): User ID
+     **Name**  ( *string* ): a unique id or name
 
 
 
@@ -176,9 +176,9 @@ The face match api compares faces in two different pictures and tells the simila
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a person
+    **image** ( *file* ): an image object
 
 
 
@@ -206,9 +206,9 @@ The object detection API locates and classifies 80 different kinds of objects in
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a person
+    **image** ( *file* ): an image object
 
 
 
@@ -238,9 +238,9 @@ The scene recognition api classifies an image into one of 365 scenes.
 
 .. tabs::
 
-  .. tab:: Parameters [POST]
+  .. tab:: parameters [POST]
 
-    **Image** ( *file* ): Picture of a place
+    **image** ( *file* ): an image object
 
 
 
