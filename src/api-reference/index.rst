@@ -63,7 +63,7 @@ The face registration endpoint allows you to register pictures of person and ass
 
     **image**   ( *file* ): an image object
 
-    **Name**  ( *string* ): a unique id or name
+    **name**  ( *string* ): a unique id or name
 
 
   .. code-tab:: json Response
@@ -149,7 +149,7 @@ The face recognition API allows you to ensure that a specific name faces that ha
 
   .. tab:: parameters [POST]
 
-     **Name**  ( *string* ): a unique id or name
+     **name**  ( *string* ): a unique id or name
 
 
 
