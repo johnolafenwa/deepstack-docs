@@ -15,7 +15,7 @@ Face Detection
 ---------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face
 
@@ -50,7 +50,7 @@ Face Registration
 
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/register
 
@@ -82,7 +82,7 @@ Face Recognition
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/recognize
 
@@ -112,7 +112,7 @@ The face recognition endpoint detects all faces in an image and returns the user
 |
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/list
 
@@ -140,7 +140,7 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 |
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/delete
 
@@ -170,7 +170,7 @@ Face Match
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/match
 
@@ -201,7 +201,7 @@ Object Detection
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/detection
 
@@ -235,7 +235,7 @@ Scene Recognition
 ------------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/scene
 
