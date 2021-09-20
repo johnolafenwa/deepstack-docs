@@ -21,15 +21,15 @@ Face Detection
 
 
 
-The face detection API detects faces and returns their coordinates. It functions similarly to the face recognition API except that it doesn't perform recognition.
+The face detection API detects faces and returns their coordinates. It functions similarly to the face recognition API except that it does not perform recognition.
 
 .. tabs::
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
-    **min_confidence** ( **float** , **optional** ) : minimum confidence to apply to results, any value from 0.0 to 1.0
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
   .. code-tab:: json Response
@@ -63,9 +63,9 @@ The face registration endpoint allows you to register pictures of person and ass
 
   .. tab:: parameters [POST]
 
-    **image**   ( **file** , **required** ) : an image object
+    **image**   ( *file* , *required* )  : an image object
 
-    **name**  ( **string** , **required** ) : a unique id or name
+    **name**  ( *string* , *required* ) : a unique id or name
 
 
   .. code-tab:: json Response
@@ -96,9 +96,9 @@ The face recognition endpoint detects all faces in an image and returns the user
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
-    **min_confidence** ( **float** , **optional** ) : minimum confidence to apply to results, any value from 0.0 to 1.0
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
   .. code-tab:: json Response
@@ -125,7 +125,7 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
 
   .. code-tab:: json Response
@@ -153,7 +153,7 @@ The face recognition API allows you to ensure that a specific name faces that ha
 
   .. tab:: parameters [POST]
 
-     **name**  ( **string** , **required** ) : a unique id or name
+     **name**  ( *string* , *required* ) : a unique id or name
 
 
 
@@ -182,7 +182,7 @@ The face match api compares faces in two different pictures and tells the simila
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
 
 
@@ -212,9 +212,9 @@ The object detection API locates and classifies 80 different kinds of objects in
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
-    **min_confidence** ( **float** , **optional** ) : minimum confidence to apply to results, any value from 0.0 to 1.0
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
 
@@ -246,7 +246,7 @@ The scene recognition api classifies an image into one of 365 scenes.
 
   .. tab:: parameters [POST]
 
-    **image** ( **file** , **required** ) : an image object
+    **image** ( *file* , *required* )  : an image object
 
 
 
