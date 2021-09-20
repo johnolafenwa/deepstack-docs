@@ -15,7 +15,7 @@ Face Detection
 ---------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face
 
@@ -27,7 +27,9 @@ The face detection API detects faces and returns their coordinates. It functions
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
+
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
   .. code-tab:: json Response
@@ -48,7 +50,7 @@ Face Registration
 
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/register
 
@@ -61,9 +63,9 @@ The face registration endpoint allows you to register pictures of person and ass
 
   .. tab:: parameters [POST]
 
-    **image**   ( *file* ): an image object
+    **image**   ( *file* , *required* )  : an image object
 
-    **name**  ( *string* ): a unique id or name
+    **name**  ( *string* , *required* ) : a unique id or name
 
 
   .. code-tab:: json Response
@@ -80,7 +82,7 @@ Face Recognition
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/recognize
 
@@ -94,7 +96,9 @@ The face recognition endpoint detects all faces in an image and returns the user
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
+
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
   .. code-tab:: json Response
@@ -108,7 +112,7 @@ The face recognition endpoint detects all faces in an image and returns the user
 |
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/list
 
@@ -121,7 +125,7 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
 
 
   .. code-tab:: json Response
@@ -136,7 +140,7 @@ The face recognition API allows you to retrieve and delete faces that have been 
 
 |
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/delete
 
@@ -149,7 +153,7 @@ The face recognition API allows you to ensure that a specific name faces that ha
 
   .. tab:: parameters [POST]
 
-     **name**  ( *string* ): a unique id or name
+     **name**  ( *string* , *required* ) : a unique id or name
 
 
 
@@ -166,7 +170,7 @@ Face Match
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/face/match
 
@@ -178,7 +182,7 @@ The face match api compares faces in two different pictures and tells the simila
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
 
 
 
@@ -197,7 +201,7 @@ Object Detection
 -----------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/detection
 
@@ -208,7 +212,9 @@ The object detection API locates and classifies 80 different kinds of objects in
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
+
+    **min_confidence** ( *float* , *optional* ) : minimum confidence to apply to results, any value from 0.0 to 1.0
 
 
 
@@ -229,7 +235,7 @@ Scene Recognition
 ------------------
 
 
-.. code-block::
+.. code-block:: endpoint
 
    http://localhost:80/v1/vision/scene
 
@@ -240,7 +246,7 @@ The scene recognition api classifies an image into one of 365 scenes.
 
   .. tab:: parameters [POST]
 
-    **image** ( *file* ): an image object
+    **image** ( *file* , *required* )  : an image object
 
 
 
