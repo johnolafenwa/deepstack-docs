@@ -18,11 +18,11 @@
 # -- Project information -----------------------------------------------------
 
 project = 'DeepStack'
-copyright = '2020, DeepQuest AI'
+copyright = '2021, DeepQuest AI'
 author = 'DeepQuest AI'
 
 # The full version, including alpha/beta/rc tags
-release = 'v1.2.3'
+release = '2021.09.1'
 
 
 # -- General configuration ---------------------------------------------------
