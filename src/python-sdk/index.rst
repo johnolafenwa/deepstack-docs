@@ -116,7 +116,7 @@ Face API
    response = face.detectFace("image.jpg",output="image_output.jpg")
 
    for obj in response:
-      print("Name: {}, Confidence: {}, x_min: {}, y_min: {}, x_max: {}, y_max: {}".format(obj.label, obj.confidence, obj.x_min, obj.y_min, obj.x_max, obj.y_max))
+      print("Confidence: {}, x_min: {}, y_min: {}, x_max: {}, y_max: {}".format(obj.confidence, obj.x_min, obj.y_min, obj.x_max, obj.y_max))
 
 
 .. figure:: ../static/got_detected.jpg
@@ -138,7 +138,7 @@ Face API
    - *output_font_color* (optional):  r, g, b 
 
 
-**3) Register images of the same face with an ID**
+**2) Register images of the same face with an ID**
 
 .. figure:: ../static/thanos.jpg
 
@@ -155,7 +155,7 @@ Face API
 
 
 
-**4) Recognize faces in an image**
+**3) Recognize faces in an image**
 
 .. figure:: ../static/thanos2.jpg
 
@@ -192,7 +192,7 @@ Face API
 
 
 
-**5) List registered faces**
+**4) List registered faces**
 
 
 .. code:: python
@@ -207,7 +207,7 @@ Face API
       print(obj)
 
 
-**6) Delete a face from registered list**
+**5) Delete a face from registered list**
 
 .. code:: python
 
@@ -221,7 +221,7 @@ Face API
 
 
 
-**7) Detect faces in a video**
+**6) Detect faces in a video**
 
 .. code:: python
 
@@ -256,7 +256,7 @@ Face API
 
 
 
-**8) Recognize faces in video**
+**7) Recognize faces in video**
 
 
 .. code:: python
