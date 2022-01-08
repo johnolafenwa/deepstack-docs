@@ -21,6 +21,7 @@ Top Features
 =============
 * `FACE DETECTION & RECOGNITION <face-recognition>`_
 * `OBJECT DETECTION <object-detection>`_
+* `IMAGE ENHANCE <image-enhance>`_
 * `SCENE RECOGNITION <scene-recognition>`_
 * `SUPPORT FOR CUSTOM OBJECT DETECTION <custom-models>`_
 * `IN-BUILT SECURITY <security>`_
@@ -186,6 +187,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    face-detection/index
    face-match/index
    object-detection/index
+   image-enhance/index
    scene-recognition/index
    custom-models/index
    custom-models-samples/index
