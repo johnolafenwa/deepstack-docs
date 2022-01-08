@@ -6,7 +6,7 @@
 Image Enhance
 =============
 
-The image enhance API enlarges your image by 4X the original width and height, while simulatenously increasing the quality of the image . 
+The image enhance API enlarges your image by 4X the original width and height, while simulatenously increasing the quality of the image. 
 
 To use this API, you need to enable the Enhance API when starting DeepStack
 
