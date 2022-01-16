@@ -38,7 +38,7 @@ Step 2: Install DeepStack
 
 .. code-block:: bash
 
-    sudo docker pull deepquestai/deepstack:arm64-2021.09.1
+    sudo docker pull deepquestai/deepstack:arm64-2022.01.1
 
 
 Step 3: RUN DeepStack
@@ -46,7 +46,7 @@ Step 3: RUN DeepStack
 
 .. code-block:: bash
 
-    sudo docker run -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:arm64-2021.09.1
+    sudo docker run -e VISION-DETECTION=True -p 80:5000 deepquestai/deepstack:arm64-2022.01.1
 
 To run with the face apis, simply use -e **VISION-FACE=True** instead, for scene, use -e **VISION-SCENE=True**.
 
@@ -66,7 +66,7 @@ You can run DeepStack with all the APIs enabled. Use the command below
 
 .. code-block:: bash
 
-    sudo docker run -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:arm64-2021.09.1
+    sudo docker run -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:arm64-2022.01.1
     
 
 .. toctree::

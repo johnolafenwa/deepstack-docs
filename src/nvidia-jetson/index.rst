@@ -31,7 +31,7 @@ Step 2: Install DeepStack GPU for Jetson
 
 .. code-block:: bash
 
-    sudo docker pull deepquestai/deepstack:jetpack-2021.09.1
+    sudo docker pull deepquestai/deepstack:jetpack-2022.01.1
 
 
 Step 3: RUN DeepStack GPU on Jetson
@@ -64,7 +64,7 @@ You can run DeepStack with all the APIs enabled. Use the command below
 
 .. code-block:: bash
 
-    sudo docker run --runtime nvidia -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:jetpack-2021.09.1
+    sudo docker run --runtime nvidia -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:jetpack-2022.01.1
     
 
 
