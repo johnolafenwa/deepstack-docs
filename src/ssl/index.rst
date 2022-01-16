@@ -54,7 +54,7 @@ Take the following steps to run DeepStack with SSL
 **-p 443:443** This specifies the port with which DeepStack will run with SSL support. By default, DeepStack uses port 443 internal when valid SSL certificates are provided. You can map another port to the internal 443 but it is recommended you keep the mapping port 443:443.
 
 
-- To confirm DeepStack is running via HTTPS, visit **https://localhost** or **https://machine-ip**. And look at the certificate information from the padlock sign. You will find the domain in the certificate information.
+- To confirm DeepStack is running via HTTPS, visit **https://localhost** or **https://machine-ip** and look at the certificate information from the padlock sign. You will find the domain in the certificate information.
     - **NB:** Browsers and HTTP clients might reject sending your request to DeepStack API if you don't map the corresponding domain to the machine IP, because of mismatch of the certificate's domain and the machine IP.
 
 
