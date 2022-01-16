@@ -192,6 +192,7 @@ Run the **example scene recognition** code at the begining of this page to verif
    custom-models/index
    custom-models-samples/index
    security/index
+   ssl/index
    backup/index
    python-sdk/index
    using-deepstack-with-nvidia-gpus/index
