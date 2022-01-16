@@ -75,6 +75,20 @@ This model is trained to detect/recognize **16 human actions** in images and vid
 Pre-trained Model and Dataset on GitHub: `DeepStack_ActionNET <https://github.com/OlafenwaMoses/DeepStack_ActionNET>`_
 
 
+5. DeepStack-Security-Camera-Models
+-----------------------------------
+
+.. figure:: https://user-images.githubusercontent.com/36526272/146625657-0fdc015e-d22e-4828-abd9-17eade39fde0.png
+
+A set of Custom Models for security related detections, covering people, vehicles, vehicle number plates, common animals etc.
+
+   - Created by: `MikeLud <https://github.com/MikeLud>`_
+   - Purpose: Person, Vehicles, Number Plate detections for security
+   - Model Type: Refer to repository linked below.
+
+Pre-trained Model on GitHub: `DeepStack-Security-Camera-Models <https://github.com/MikeLud/DeepStack-Security-Camera-Models>`_
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:

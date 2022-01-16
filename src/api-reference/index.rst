@@ -231,6 +231,36 @@ The object detection API locates and classifies 80 different kinds of objects in
 
 |
 
+Image Enhance
+-----------------
+
+
+.. code-block:: endpoint
+
+   http://localhost:80/v1/vision/enhance
+
+
+The image enhance API enlarges your image by 4X the original width and height, while simulatenously increasing the quality of the image.
+
+.. tabs::
+
+  .. tab:: parameters [POST]
+
+    **image** ( *file* , *required* )  : an image object
+
+
+  .. code-tab:: json Response
+
+    {
+        "success": True,
+        "base64": ".........mabKicgSdq/3fSo6UfcH0pATmhEgST3phPHNKe1RuetUJn//2Q==",
+        "width": 1840
+        "height": 1036
+    }
+
+
+|
+
 Scene Recognition
 ------------------
 
