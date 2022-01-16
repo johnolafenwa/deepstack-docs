@@ -32,7 +32,7 @@ Take the following steps to run DeepStack with SSL
 
   .. code-tab:: bash Docker CPU
 
-    docker run -e VISION-DETECTION=True -v localstorage:/datastore -v absolute/path/to/certificate-directory:/cert -p 443:443 deepquestai/deepstack
+    sudo docker run -e VISION-DETECTION=True -v localstorage:/datastore -v absolute/path/to/certificate-directory:/cert -p 443:443 deepquestai/deepstack
   
   .. code-tab:: bash Docker GPU
 
