@@ -58,15 +58,28 @@ To run with the face apis, simply use -e **VISION-FACE=True** instead, for scene
 
 Once installed, run the example detection code to verify your installation is working.
 
+DeepStack on Arm64 Servers
+------------------------------------------
+The standard arm64 DeepStack image above is targetted towards lower power arm64 devices, there is a accuracy tradeoff.
+To run DeepStack on arm64 at the level of accuracy obtained on the higher end CPU and GPU images,
+Use 
+.. code-block:: bash
+
+    sudo docker pull deepquestai/deepstack:arm64-server-2022.01.1
+
 
 RUN with All APIs
 -----------------
 
-You can run DeepStack with all the APIs enabled. Use the command below
+You can run DeepStack with all the APIs enabled. Use the command below for lower power devices
 
 .. code-block:: bash
 
     sudo docker run -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:arm64-2022.01.1
+    
+For higher end arm64 devices
+
+    sudo docker run -e VISION-SCENE=True -e VISION-DETECTION=True -e VISION-FACE=True  -p 80:5000 deepquestai/deepstack:arm64-server-2022.01.1
     
 
 .. toctree::
