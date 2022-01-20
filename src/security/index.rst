@@ -40,6 +40,16 @@ Run the command below as it applies to the version you have installed
 
     sudo deepstack start "VISION-SCENE=True API-KEY=Mysecretkey"
 
+  .. code-tab:: bash ARM64
+
+    sudo docker run -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:arm64
+
+  .. code-tab:: bash ARM64 Server
+
+    sudo docker run -e API-KEY=Mysecretkey -e VISION-SCENE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:arm64-server
+  
+  
+
 
 The command **-e API-KEY=Mysecretkey** sets **Mysecretkey** as the api key.
 

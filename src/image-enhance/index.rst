@@ -20,7 +20,7 @@ Run the command below as it applies to the version you have installed
 
   .. code-tab:: bash Docker CPU
 
-    docker run -e VISION-ENHANCE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
+    sudo docker run -e VISION-ENHANCE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack
   
   .. code-tab:: bash Docker GPU
 
@@ -33,6 +33,14 @@ Run the command below as it applies to the version you have installed
   .. code-tab:: bash NVIDIA Jetson
 
     sudo docker run --runtime nvidia -e VISION-ENHANCE=True -p 80:5000 deepquestai/deepstack:jetpack
+
+  .. code-tab:: bash ARM64
+
+    sudo docker run -e VISION-ENHANCE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:arm64
+
+  .. code-tab:: bash ARM64 Server
+
+    sudo docker run -e VISION-ENHANCE=True -v localstorage:/datastore -p 80:5000 deepquestai/deepstack:arm64-server
 
 
 

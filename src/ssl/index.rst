@@ -46,6 +46,16 @@ Take the following steps to run DeepStack with SSL
 
     sudo docker run --runtime nvidia -e VISION-DETECTION=True -v absolute/path/to/certificate-directory:/cert -p 443:443 deepquestai/deepstack:jetpack
 
+  .. code-tab:: bash ARM64
+
+    sudo docker run -e VISION-DETECTION=True -v localstorage:/datastore -v absolute/path/to/certificate-directory:/cert -p 443:443 deepquestai/deepstack:arm64
+
+  .. code-tab:: bash ARM64 Server
+
+    sudo docker run -e VISION-DETECTION=True -v localstorage:/datastore -v absolute/path/to/certificate-directory:/cert -p 443:443 deepquestai/deepstack:arm64-server
+  
+  
+
 
 *Basic Parameters*
 
