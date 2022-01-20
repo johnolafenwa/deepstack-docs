@@ -36,6 +36,13 @@ Run the command below as it applies to the version you have installed
 
     sudo docker run --runtime nvidia -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack:jetpack
 
+  .. code-tab:: bash ARM64
+
+    sudo docker run -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack:arm64
+
+  .. code-tab:: bash ARM64 Server
+
+    sudo docker run -v /path-to/custom-models-folder:/modelstore/detection -p 80:5000 deepquestai/deepstack:arm64-server
 
 
 *Basic Parameters*
