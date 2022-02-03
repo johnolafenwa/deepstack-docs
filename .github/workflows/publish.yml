@@ -14,7 +14,7 @@ jobs:
         name: deepquestai/deepstack-docs
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
-        tags: "latest, 2022.01.1"
+        tags: "latest, 2022.02.1"
         default_branch: main
         dockerfile: Dockerfile
   publish:
@@ -26,12 +26,12 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.MACHINE_ADDRESS }}
-        username: root
+        username: deepquestai
         password: ${{ secrets.MACHINE_ACCESS }}
         port: 22
         script: |
           sudo docker pull deepquestai/deepstack-docs
           sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
-          sudo docker run -d --name deepstack_docs -p 80:80 --restart unless-stopped deepquestai/deepstack-docs
+          sudo docker run -d --name deepstack_docs -p 80:80 -v ~/tls:/certs --restart unless-stopped deepquestai/deepstack-docs
           sudo docker ps
           exit

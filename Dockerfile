@@ -18,4 +18,4 @@ RUN cd /src && make html
 EXPOSE 80
 
 # Run Python documentation with TLS
-CMD [ "http-server", "/src/build/html", "-p", "80"]
+CMD [ "http-server", "/src/build/html", "-p", "443", "--ssl", "true", "--cert", "certs/fullchain.pem", "--key", "certs/key.pem"]
