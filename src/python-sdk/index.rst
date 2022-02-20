@@ -141,6 +141,7 @@ Face API
 **2) Register images of the same face with an ID**
 
 .. figure:: ../static/thanos.jpg
+   :scale: 70 %
 
 .. code:: python
   

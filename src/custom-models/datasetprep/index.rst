@@ -86,14 +86,17 @@ Run
     python3 labelimg
 
 .. figure:: ../../static/labelimg.jpeg
+    :scale: 70 %
 
 Go to your LabelImg menu, select "View" and make sure "Auto Save Mode" is checked.
 
 .. figure:: ../../static/labelimgauto.jpeg
+    :scale: 70 %
 
 Click on "Open Dir" on the top-left and select your "train" directory where your training images are kept. The first image in your folder will be shown as seen in the example below.
 
 .. figure:: ../../static/labelimgopen.jpeg
+    :scale: 70 %
 
 Click on the "Change Save Dir" on the top-left and select your "train" folder. The annotation files will be saved alongside your images.
 
@@ -104,28 +107,34 @@ Click on Pascal/VOC to change it to YOLO format
 FROM 
 
 .. figure:: ../../static/pascal.png
+    :scale: 70 %
 
 TO 
 
 .. figure:: ../../static/yolo.png
+    :scale: 70 %
 
 Step 4: Annotate Your Dataset
 =============================
 Now that you have loaded your images, set the save folder for the annotations and switched to the YOLO format, we shall annotate our dataset. In this example, we are using an image dataset on Google Glass.
 
 .. figure:: ../../static/googleglasss.png
+    :scale: 70 %
 
 Start annotating your images by:
 
 Click on the "Create \nRectBox" button on the left-bottom and draw a box around the objects you want to annotate as seen in the images below.
 
 .. figure:: ../../static/annotate.jpeg
+    :scale: 70 %
 
 * Click on the "Create \nRectBox" button again and annotate all the objects in the image.
 * Once you are done, click the "Next Image" button on the middle-left to annotate the another image.
 
 .. figure:: ../../static/annotate3.jpeg
+    :scale: 70 %
 .. figure:: ../../static/annotate4.jpeg
+    :scale: 70 %
 
 As you are annotating your images, the **.TXT** files containing your box annotations are saved for each image in the "train" folder. 
 

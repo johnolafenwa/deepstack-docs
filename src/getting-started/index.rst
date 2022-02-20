@@ -75,10 +75,13 @@ Here we are building an application that can tell the names of a number of popul
 .. figure:: ../static/tomcruise.jpg
 
 .. figure:: ../static/adele.jpg
+   :scale: 70 %
 
 .. figure:: ../static/idriselba.jpg
+   :scale: 70 %
 
 .. figure:: ../static/perri.jpg
+   :scale: 70 %
 
 
 Below we will register the faces with their names

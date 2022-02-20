@@ -166,6 +166,7 @@ The face recognition endpoint detects all faces in an image and returns the **us
 We shall test this on the image below.
 
 .. figure:: ../static/idriselba2.jpg
+   :scale: 20 %
 
 .. tabs::
 

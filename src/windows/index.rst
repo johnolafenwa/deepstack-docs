@@ -10,6 +10,7 @@ DeepStack CPU and GPU Version is now available for the Windows operating System.
 
 
 .. figure:: ../static/windows.jpeg
+    :scale: 70 %
 
 Install DeepStack CPU
 ----------------------

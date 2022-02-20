@@ -5,7 +5,7 @@ RUN apt update
 RUN apt install -y npm
 RUN npm install --global http-server
 RUN pip3 install Sphinx==4.1.2
-RUN pip3 install sphinxawesome-theme==2.0.0
+RUN pip3 install sphinx-press-theme==0.8.0
 RUN pip3 install sphinx-tabs
 RUN apt-get install -y make
 
