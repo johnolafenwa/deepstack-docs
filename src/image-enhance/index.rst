@@ -184,6 +184,7 @@ The API returns a Base64 string which you can decode to get the 4 times enhanced
 *Enhanced Output*
 
 .. figure:: ../static/sky-4X.jpg
+    :scale: 80 %
 
 
 
@@ -201,10 +202,12 @@ The API returns a Base64 string which you can decode to get the 4 times enhanced
 
 
 .. figure:: ../static/car-park-4X.jpg
+    :scale: 80 %
 
 **
 
 .. figure:: ../static/fox-4X.jpg
+    :scale: 80 %
 
 .. toctree::
    :maxdepth: 2

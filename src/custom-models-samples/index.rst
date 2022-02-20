@@ -51,6 +51,7 @@ Pre-trained Model on GitHub: `DeepStack_OpenLogo <https://github.com/OlafenwaMos
 -------------------------------------
 
 .. figure:: https://github.com/OlafenwaMoses/DeepStack_ExDark/raw/main/images/1.jpg
+   :scale: 70 %
 
 This model is trained to detect 12 common objects in images and videos from Dark/Night scenes. This model was trained on the `ExDark Dataset <https://github.com/cs-chan/Exclusively-Dark-Image-Dataset>`_.
 
@@ -65,6 +66,7 @@ Pre-trained Model on GitHub: `DeepStack_ExDark <https://github.com/OlafenwaMoses
 -------------------------------------
 
 .. figure:: https://github.com/OlafenwaMoses/DeepStack_ActionNET/raw/main/images/test4_detected.jpg
+   :scale: 70 %
 
 This model is trained to detect/recognize **16 human actions** in images and videos. This model was trained on the `ActionNET Dataset <https://github.com/OlafenwaMoses/Action-Net>`_.
 
@@ -79,6 +81,7 @@ Pre-trained Model and Dataset on GitHub: `DeepStack_ActionNET <https://github.co
 -----------------------------------
 
 .. figure:: https://user-images.githubusercontent.com/36526272/146625657-0fdc015e-d22e-4828-abd9-17eade39fde0.png
+   :scale: 70 %
 
 A set of Custom Models for security related detections, covering people, vehicles, vehicle number plates, common animals etc.
 

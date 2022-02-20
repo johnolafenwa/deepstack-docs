@@ -10,6 +10,7 @@ DeepStack GPU Version is available for the full range of Jetson Devices, from th
 
 
 .. figure:: ../static/jetson.jpg
+    :scale: 70 %
 
 
 Follow the steps below to install DeepStack on a Jetson device.

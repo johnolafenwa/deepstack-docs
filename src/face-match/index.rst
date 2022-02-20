@@ -11,6 +11,7 @@ The face match api compares faces in two different pictures and tells the simila
 **Example**
 
 .. figure:: ../static/obama1.jpg
+    :scale: 70 %
 
 .. figure:: ../static/obama2.jpg
 
@@ -94,6 +95,7 @@ Here we shall compare a picture of Obama with that of Bradley Cooper.
 
 
 .. figure:: ../static/obama1.jpg
+    :scale: 70 %
 
 .. figure:: ../static/brad.jpg
 
