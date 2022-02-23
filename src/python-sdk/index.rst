@@ -440,6 +440,46 @@ Scene Recognition
    - *output_font* (optional): cv2 font
    - *output_font_color* (optional):  r, g, b 
 
+
+
+Image Enhance
+-----------------
+
+.. figure:: ../static/fox.jpg
+
+**Sample Code**
+
+.. code:: python
+
+   from deepstack_sdk import ServerConfig, Enhance
+
+   config = ServerConfig("http://localhost:80")
+   enhancer = Enhance(config)
+
+   response = enhancer.enhanceObject("sky.jpg", output="sky-4X.jpg")
+
+   for obj in response:
+       print("Base64: {}, width: {}, height: {}".format(obj.base64, obj.width, obj.height))
+
+
+.. figure:: ../static/fox-4X.jpg
+
+
+**Available Parameters**:
+
+- **ServerConfig()**
+   - *server_url* (required): DeepStack's URL with port
+   - *api_key* (optional): API key must be provided if DeepStack was initiated as stated in `Security: API Key <https://docs.deepstack.cc/security/index.html#setting-api-key>`_.
+   - *admin_key* (optional): Admin key must be provided if DeepStack was initiated as stated in `Security: Admin Key <https://docs.deepstack.cc/security/index.html#setting-admin-keys>`_.
+
+- **enhanceObject()**
+   - *image* (required): file path, numpy array, PIL Image, image bytes, url
+   - *format* (optional): jpg, png
+   - *output* (optional): file path of none if you don't want to save to file.
+
+
+
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
