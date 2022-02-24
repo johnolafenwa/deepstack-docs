@@ -114,12 +114,6 @@ Run the command below as it applies to the version you have installed
         class Response {
 
             public bool success {get;set;}
-            public Enhance[] predictions {get;set;}
-
-        }
-
-        class Enhance {
-
             public int base64 {get;set;}
             public int width {get;set;}
             public int height {get;set;}
