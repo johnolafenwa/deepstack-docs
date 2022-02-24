@@ -29,7 +29,7 @@ To install and use DeepStack GPU version on your Windows machine, follow the ste
 
 - Ensure your machine has an NVIDIA GPU
 
-- Download and Install `CUDA 11.3.1 from NVIDIA <https://developer.nvidia.com/cuda-11-3-1-download-archive>`_ 
+- Download and Install `CUDA 11.3.1 from NVIDIA <https://developer.nvidia.com/cuda-11-3-1-download-archive>`_
 
 - Download and Install `cuDNN from NVIDIA <https://developer.nvidia.com/cudnn>`_ 
 

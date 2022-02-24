@@ -94,14 +94,9 @@ Run the command below as it applies to the version you have installed
         request.post({url:"http://localhost:80/v1/vision/enhance", formData:form},function(err,res,body){
 
             response = JSON.parse(body)
-            predictions = response["predictions"]
-            for(var i =0; i < predictions.length; i++){
-
-                console.log(predictions[i]["label"])
-
-            }
 
             console.log(response)
+
         })
     
     .. code-tab:: c#
@@ -119,18 +114,9 @@ Run the command below as it applies to the version you have installed
         class Response {
 
             public bool success {get;set;}
-            public Object[] predictions {get;set;}
-
-        }
-
-        class Object {
-
-            public string label {get;set;}
-            public float confidence {get;set;}
-            public int y_min {get;set;}
-            public int x_min {get;set;}
-            public int y_max {get;set;}
-            public int x_max {get;set;}
+            public int base64 {get;set;}
+            public int width {get;set;}
+            public int height {get;set;}
 
         }
 
@@ -138,7 +124,7 @@ Run the command below as it applies to the version you have installed
 
             static HttpClient client = new HttpClient();
 
-            public static async Task detectFace(string image_path){
+            public static async Task enhanceObject(string image_path){
 
                 var request = new MultipartFormDataContent();
                 var image_data = File.OpenRead(image_path);
@@ -147,11 +133,8 @@ Run the command below as it applies to the version you have installed
                 var jsonString = await output.Content.ReadAsStringAsync();
                 Response response = JsonConvert.DeserializeObject<Response>(jsonString);
 
-                foreach (var user in response.predictions){
 
-                    Console.WriteLine(user.label);
-
-                }
+                Console.WriteLine(response);
 
                 Console.WriteLine(jsonString);
 
@@ -159,7 +142,7 @@ Run the command below as it applies to the version you have installed
 
             static void Main(string[] args){
 
-                detectFace("test-image3.jpg").Wait();
+                enhanceObject("test-image3.jpg").Wait();
 
             }
 
