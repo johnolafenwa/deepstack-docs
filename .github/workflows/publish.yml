@@ -17,21 +17,3 @@ jobs:
         tags: "latest, 2022.02.1"
         default_branch: main
         dockerfile: Dockerfile
-  publish:
-    name: Deploy to Live Docs Server
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Deploy DeepStack Documentation
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.MACHINE_ADDRESS }}
-        username: deepquestai
-        password: ${{ secrets.MACHINE_ACCESS }}
-        port: 22
-        script: |
-          sudo docker pull deepquestai/deepstack-docs
-          sudo docker container stop deepstack_docs && sudo docker container rm deepstack_docs
-          sudo docker run -d --name deepstack_docs -p 443:443 -v ~/tls:/certs --restart unless-stopped deepquestai/deepstack-docs
-          sudo docker ps
-          exit
