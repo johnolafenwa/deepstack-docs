@@ -55,5 +55,6 @@ html_static_path = ['static']
 html_css_files = [
     'css/style.css',
 ]
+html_js_files = ['js/stat.js',]
 html_logo = "logo.png"
 html_favicon = "logo.png"
