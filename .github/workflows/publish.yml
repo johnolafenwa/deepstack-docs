@@ -14,6 +14,6 @@ jobs:
         name: deepquestai/deepstack-docs
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_ACCESS }}
-        tags: "latest, 2022.02.1"
+        tags: "latest, 2022.03.1"
         default_branch: main
         dockerfile: Dockerfile
